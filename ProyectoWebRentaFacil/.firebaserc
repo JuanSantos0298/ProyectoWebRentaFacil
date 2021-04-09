@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "proyectowebcasas": {
+      "hosting": {
+        "ProyectoWebRentaFacil": [
+          "proyectowebcasas"
+        ]
+      }
+    }
+  }
+}
