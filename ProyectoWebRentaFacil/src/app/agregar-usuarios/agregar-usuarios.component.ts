@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-agregar-usuarios',
   templateUrl: './agregar-usuarios.component.html',
-  styleUrls: ['./agregar-usuarios.component.css']
+  styleUrls: ['./agregar-usuarios.component.css'],
+  
 })
 export class AgregarUsuariosComponent implements OnInit {
 
@@ -18,12 +19,17 @@ export class AgregarUsuariosComponent implements OnInit {
       //le pasaremos objetos
       Nombre: ['', Validators.required],
       Apellido: ['', Validators.required],
-      Telefono: ['', Validators.required],
+      Telefono: [''],
       Cuentabancaria: ['', Validators.required],
-      CVC: ['', Validators.required],
+      CVC: [''],
       Correo: ['', Validators.compose([Validators.required,Validators.email])],
       Contrasena: ['', Validators.required],
     })
+  }
+
+
+  agregar(){
+    console.log(this.formularioUsuario.value);
   }
 
 }
