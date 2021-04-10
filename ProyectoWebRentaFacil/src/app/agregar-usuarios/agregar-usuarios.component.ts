@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//Importaremos AngularFirestore y AngularFireStorage
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-agregar-usuarios',
@@ -12,7 +15,7 @@ export class AgregarUsuariosComponent implements OnInit {
   formularioUsuario:FormGroup;
 
   //Establezco la validacion para el formulario
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore) { }
 
   ngOnInit(){
     this.formularioUsuario = this.fb.group({
@@ -30,6 +33,9 @@ export class AgregarUsuariosComponent implements OnInit {
 
   agregar(){
     console.log(this.formularioUsuario.value);
+    this.db.collection('Usuarios').add(this.formularioUsuario.value).then((finalizado)=>{
+      console.log("Se ha creado el registro. ");
+    })
   }
 
 }
