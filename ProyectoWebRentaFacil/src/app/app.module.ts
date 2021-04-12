@@ -9,13 +9,15 @@ import { VentanaInicioPrincipalComponent } from './ventana-inicio-principal/vent
 //Importamos para el servicio de Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { BorrarUsuarioComponent } from './borrar-usuario/borrar-usuario/borrar-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AgregarUsuariosComponent,
     EncabezadosComponent,
-    VentanaInicioPrincipalComponent
+    VentanaInicioPrincipalComponent,
+    BorrarUsuarioComponent
   ],
   imports: [
     BrowserModule,
