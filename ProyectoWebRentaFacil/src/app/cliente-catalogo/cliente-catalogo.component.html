@@ -1,0 +1,57 @@
+<br><div class="conte"><br><br><br><br>
+  <form class="for">
+    <input class="buscador" type="search" placeholder="Estado" aria-label="Search">
+    <button class="busca" type="submit">Buscar</button>
+  </form><br>
+<div class="casa" *ngFor ="let casa of casas" >
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner" >
+        <div class="carousel-item active" >
+          <img src="{{casa.img}}" class="d-block w-100" alt="parte uno">
+          <div class="carousel-caption d-none d-md-block">
+              <strong>{{casa.Municipio}}</strong><strong>, {{casa.Estado}}</strong><br>
+              <b>${{casa.Costo}}</b>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{casa.img}}" class="d-block w-100" alt="parte dos">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/casa2.jpg" class="d-block w-100" alt="parte 3">
+        </div>
+      </div>
+    </div>
+    <div>
+    <div class="text-center" *ngIf="casa.Estrellas==5">
+      <img class="estrellas" src="./assets/Estrellas5.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==4">
+      <img class="estrellas" src="./assets/Estrellas4.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==3">
+      <img class="estrellas" src="./assets/Estrellas3.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==2">
+      <img class="estrellas" src="./assets/Estrellas2.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==1">
+      <img class="estrellas" src="./assets/Estrellas1.jpeg">
+    </div>
+    <div>
+      <button class="rentar">Rentar</button>
+    </div>
+  </div><br><br>
+    <div class="comentario">
+      <i>"{{casa.Comentarios}}"</i>
+    </div>  
+    <br><br><br><br><br><br><br>
+    
+  </div> 
+</div>
+
+   

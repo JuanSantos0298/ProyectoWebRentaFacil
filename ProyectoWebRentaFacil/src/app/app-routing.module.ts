@@ -4,6 +4,7 @@ import { AgregarUsuariosComponent } from './agregar-usuarios/agregar-usuarios.co
 import { AppComponent } from './app.component';
 import { VentanaInicioPrincipalComponent } from './ventana-inicio-principal/ventana-inicio-principal.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
+import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 
 //Establezco las rutas de las paginas de los componentes que voy a usar para el cambio entre paginas
 const routes: Routes = [
@@ -19,6 +20,8 @@ const routes: Routes = [
   {path: 'iniciar-sesion', component: IniciarSesionComponent},
     //Ruta para inicio con sesion
     {path:'ventana-inicio-principal/:correo', component: VentanaInicioPrincipalComponent},
+    //Ruta para ver catalogo
+    {path: 'cliente-catalogo', component: ClienteCatalogoComponent}
 
 ];
 

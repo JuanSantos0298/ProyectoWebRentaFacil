@@ -14,4 +14,9 @@ export class ServicioService {
     
     return this.firestore.collection("Usuarios", ref => ref.where("Correo","==",corre).where("Contraseña","==",contra)).valueChanges();
   }
+
+  //Servicio para casas
+  getCasas(): Observable<any>{
+  return this.firestore.collection('casas').snapshotChanges();
+}
 }

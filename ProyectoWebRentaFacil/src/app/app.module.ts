@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { BorrarUsuarioComponent } from './borrar-usuario/borrar-usuario/borrar-usuario.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
+import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
     EncabezadosComponent,
     VentanaInicioPrincipalComponent,
     BorrarUsuarioComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    ClienteCatalogoComponent
   ],
   imports: [
     BrowserModule,
