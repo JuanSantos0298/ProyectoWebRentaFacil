@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ServicioService} from 'src/app/Servicios/servicio.service'
+import {ServicioService} from 'src/app/Servicios/servicio.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,12 +11,14 @@ import {ServicioService} from 'src/app/Servicios/servicio.service'
 })
 export class IniciarSesionComponent implements OnInit {
   Empleados: string[]=[];
+  no="";
+  ap="";
   per="l";
   respuesta="";
   l="";
   submited=false;
   Datos: FormGroup;
-  constructor( private ruta: Router,private fb: FormBuilder,private _Empleadoservice: ServicioService) {
+  constructor( private toastr: ToastrService, private ruta: Router,private fb: FormBuilder,private _Empleadoservice: ServicioService) {
     //constructor( private ruta: Router,private fb: FormBuilder,private _Empleadoservice: EmpleadoserviceService)
     this.Datos=this.fb.group({
       correo: ['',Validators.required],
@@ -37,16 +40,19 @@ export class IniciarSesionComponent implements OnInit {
         console.log(data);
         this.per= data[0]["Correo"];
         this.l= data[0]["Contraseña"];
-        this.ver(this.per,empleado.correo,this.l,empleado.contra);
+        this.no= data[0]["Nombre"];
+        this.ap= data[0]["Apellido"];
+        this.ver(this.per,empleado.correo,this.l,empleado.contra,this.no,this.ap);
       })
     }
 
-    ver(da: String,de:String,du:String,di: String)
+    ver(da: String,de:String,du:String,di: String,no: string,ap: string)
     {
       if(da==de && du==di)
       {
         this.respuesta="Existe";
-        this.ruta.navigate(['/ventana-inicio-principal/'+de]);
+        this.toastr.info("Bienvenido "+no+" "+ap,"");
+        this.ruta.navigate(['/cliente-catalogo/'+de]);
       }
 
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../data/cliente/usuario.service'
+import { UsuarioService } from '../../data/cliente/usuario.service';
+import { ToastrService } from 'ngx-toastr';;
 
 @Component({
   selector: 'app-borrar-usuario',
@@ -8,7 +9,7 @@ import { UsuarioService } from '../../data/cliente/usuario.service'
 })
 export class BorrarUsuarioComponent implements OnInit {
 
-  constructor( private usuarioService: UsuarioService) { }
+  constructor( private toast: ToastrService, private usuarioService: UsuarioService) { }
 
   datos = this.usuarioService.Users;
   ngOnInit(): void {
@@ -17,7 +18,7 @@ export class BorrarUsuarioComponent implements OnInit {
   async borrarUsuario(nombre: string): Promise<void>{
     try {
       await this.usuarioService.eliminarUsuario(nombre);
-      alert("Usuario Borrado");
+      this.toast.success("Registro exitoso");
     } catch (error) {
       console.log(error)
     }

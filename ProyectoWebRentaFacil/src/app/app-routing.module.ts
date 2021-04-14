@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { VentanaInicioPrincipalComponent } from './ventana-inicio-principal/ventana-inicio-principal.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
+import {BorrarUsuarioComponent} from './borrar-usuario/borrar-usuario/borrar-usuario.component';
+
 
 //Establezco las rutas de las paginas de los componentes que voy a usar para el cambio entre paginas
 const routes: Routes = [
@@ -19,9 +21,11 @@ const routes: Routes = [
   //Ruta para inicar sesion
   {path: 'iniciar-sesion', component: IniciarSesionComponent},
     //Ruta para inicio con sesion
-    {path:'ventana-inicio-principal/:correo', component: VentanaInicioPrincipalComponent},
+    {path:'cliente-catalogo/:correo', component: ClienteCatalogoComponent},
     //Ruta para ver catalogo
-    {path: 'cliente-catalogo', component: ClienteCatalogoComponent}
+    {path: 'cliente-catalogo', component: ClienteCatalogoComponent},
+    //Ruta para borrar usuarios
+    {path:'borrar-usuario',component: BorrarUsuarioComponent},
 
 ];
 
