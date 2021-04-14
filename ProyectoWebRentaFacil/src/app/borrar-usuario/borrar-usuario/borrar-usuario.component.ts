@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../data/cliente/usuario.service'
+import { UsuarioService } from '../../data/cliente/usuario.service';
 
 @Component({
   selector: 'app-borrar-usuario',
