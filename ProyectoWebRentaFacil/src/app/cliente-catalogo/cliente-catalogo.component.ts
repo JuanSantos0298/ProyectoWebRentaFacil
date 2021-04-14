@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import {ServicioService} from 'src/app/Servicios/servicio.service'
 
 
@@ -12,12 +10,17 @@ import {ServicioService} from 'src/app/Servicios/servicio.service'
 })
 export class ClienteCatalogoComponent implements OnInit {
   casas: any[]=[];
-  constructor(private _casasService: ServicioService) {
-
+  correo:string | null;
+  ocu="";
+  dato=""
+  constructor(private aRout: ActivatedRoute, private _casasService: ServicioService) {
+    this.correo=this.aRout.snapshot.paramMap.get('correo');
+    //console.log(this.correo);
   }
 
   ngOnInit(): void {
       this.getCasas()
+      this.getveri();
   }
   getCasas(){
     this._casasService.getCasas().subscribe( data => {
@@ -33,4 +36,27 @@ export class ClienteCatalogoComponent implements OnInit {
     });
   }
 
+  getveri()
+  {
+    console.log(this.correo);
+    this._casasService.getOcu(this.correo).subscribe((data:any) =>
+      {
+        this.ocu=data[0]["Ocupación"];
+        this.compro(this.ocu);
+      })
+  }
+
+  compro(ocu: string)
+  {
+    if(ocu == "Cliente")
+    {
+      this.dato="Cliente";
+      console.log(this.dato);
+    }
+    else
+    {
+      this.dato="Propietario";
+      console.log(this.dato);
+    }
+  }
 }

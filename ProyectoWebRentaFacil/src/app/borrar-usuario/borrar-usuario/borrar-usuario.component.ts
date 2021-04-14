@@ -16,9 +16,9 @@ export class BorrarUsuarioComponent implements OnInit {
   }
 
   async borrarUsuario(nombre: string): Promise<void>{
+    this.toast.success("Usuario eliminado exitosamente");
     try {
       await this.usuarioService.eliminarUsuario(nombre);
-      this.toast.success("Registro exitoso");
     } catch (error) {
       console.log(error)
     }

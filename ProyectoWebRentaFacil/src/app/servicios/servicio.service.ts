@@ -16,7 +16,14 @@ export class ServicioService {
   }
 
   //Servicio para casas
-  getCasas(): Observable<any>{
+  getCasas(): Observable<any>
+  {
   return this.firestore.collection('casas').snapshotChanges();
-}
+  }
+
+  //Servicio de validación
+  getOcu(corre: string): Observable<any>
+  {
+    return this.firestore.collection("Usuarios",ref=> ref.where("Correo","==",corre)).valueChanges();
+  }
 }

@@ -28,6 +28,7 @@ export class AgregarUsuariosComponent implements OnInit {
       CVC: ['', Validators.required],
       Correo: ['', Validators.compose([Validators.required,Validators.email])],
       Contraseña: ['', Validators.required],
+      Ocupación: ['',Validators.required],
     })
   }
 

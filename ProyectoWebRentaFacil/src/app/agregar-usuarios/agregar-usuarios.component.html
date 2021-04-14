@@ -1,7 +1,7 @@
 <!-- <p>agregar-usuarios works!</p> -->
 <br>
 <div id="Co" class="container mt-5">
-    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 42rem;">
+    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 47rem;">
         <div class="card-body">
             <form [formGroup]="formularioUsuario" action="">
                 <div class="row"></div>
@@ -64,6 +64,17 @@
                                 <span *ngIf = "formularioUsuario.controls['Contraseña'].errors.required" >Se requiere el uso de una contraseña. </span>
                             </div>                                        
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Ocupación</label>
+                            <input type="text" class="form-control border-dark" formControlName="Ocupación" placeholder="Introduzca su ocupación cliente o propietario. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Ocupación'].invalid && formularioUsuario.controls['Ocupación'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Ocupación'].errors.required" >Se requiere que escriba cliente o propietario </span>
+                            </div>                                        
+                        </div>
+                        
+
                         <br> 
                         <button id="l" type="text" class="btn btn-secondary" routerLink="">Cancelar</button>
                         <button class="btn btn-primary" [disabled] = "formularioUsuario.invalid" (click) = "agregar()" routerLink="/iniciar-sesion">Registrarse</button>
