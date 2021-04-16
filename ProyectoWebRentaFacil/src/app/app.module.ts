@@ -19,6 +19,7 @@ import { VentanaInicioPrincipalComponent } from './ventana-inicio-principal/vent
 import { BorrarUsuarioComponent } from './borrar-usuario/borrar-usuario/borrar-usuario.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
+import { EditarCasaComponent } from './editar-casa/editar-casa.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.co
     VentanaInicioPrincipalComponent,
     BorrarUsuarioComponent,
     IniciarSesionComponent,
-    ClienteCatalogoComponent
+    ClienteCatalogoComponent,
+    EditarCasaComponent
   ],
   imports: [
     BrowserModule,

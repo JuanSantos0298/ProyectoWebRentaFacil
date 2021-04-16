@@ -47,10 +47,16 @@
     </div>
   </div><br><br>
     <div class="comentario">
-      <i>"{{casa.Comentarios}}"</i>
+      <i>"{{casa.Descripcion}}"</i>
     </div>  
     <br><br><br><br><br><br><br>
     
   </div> 
+</div>
+
+<div class="card" *ngIf="dato == 'Propietario'">
+  <div class="casa" *ngFor ="let casa of casas" >
+    <button class="fas fa-edit bg-info border-info" routerLink="/editar-casa/{{correo}}/{{casa.id}}">Editar</button>
+  </div>
 </div>
    

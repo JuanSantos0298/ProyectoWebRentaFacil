@@ -26,4 +26,15 @@ export class ServicioService {
   {
     return this.firestore.collection("Usuarios",ref=> ref.where("Correo","==",corre)).valueChanges();
   }
+
+  datoscasa(id: string): Observable<any>
+  {
+    return this.firestore.collection("casas").doc(id).snapshotChanges();
+  }
+
+  ActualizarCasa(id: string,data: any): Promise <any>
+  {
+    return this.firestore.collection("casas").doc(id).update(data);
+  }
+
 }
