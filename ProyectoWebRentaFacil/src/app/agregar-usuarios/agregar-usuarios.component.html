@@ -1,68 +1,85 @@
 <!-- <p>agregar-usuarios works!</p> -->
-<div class="container mt-5">
-    <form [formGroup]="formularioUsuario" action="">
-        <div class="row"></div>
-                <div class="form-group">
-                    <label for="">Nombre</label>
-                    <input type="text" class="form-control" formControlName="Nombre" placeholder="Introduzca su nombre. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['Nombre'].invalid && formularioUsuario.controls['Nombre'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['Nombre'].errors.required" >Se requiere el nombre. </span>
-                    </div>
-                </div> 
-                <br>
-                <div class="form-group">
-                    <label for="">Apellido</label>
-                    <input type="text" class="form-control" formControlName="Apellido" placeholder="Introduzca su apellido. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['Apellido'].invalid && formularioUsuario.controls['Apellido'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['Apellido'].errors.required" >Se requiere el apellido</span>
-                    </div>                    
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="">Telefono</label>
-                    <input type="text" class="form-control" formControlName="Telefono" placeholder="Introduzca su apellido. ">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="">Clave Interbancaria</label>
-                    <input type="text" class="form-control" formControlName="Cuentabancaria" placeholder="Introduzca su numero de cuenta bancaria. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['Cuentabancaria'].invalid && formularioUsuario.controls['Cuentabancaria'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['Cuentabancaria'].errors.required" >Se requiere su Clave Interbancaria. </span>
-                    </div>                    
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="">CVC</label>
-                    <input type="text" class="form-control" formControlName="CVC" placeholder="Introduzca el CVC. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['CVC'].invalid && formularioUsuario.controls['CVC'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['CVC'].errors.required" >Se requiere su CVC. </span>
-                    </div>                    
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="">Correo</label>
-                    <input type="email" class="form-control" formControlName="Correo" placeholder="Introduzca su correo. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['Correo'].invalid && formularioUsuario.controls['Correo'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['Correo'].errors.required" >Se requiere su correo electronico. </span>
-                        <span *ngIf = "formularioUsuario.controls['Correo'].errors.email" >Su correo electronico no es valido. </span>
-                    </div>                    
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="">Contraseña</label>
-                    <input type="password" class="form-control" formControlName="Contrasena" placeholder="Introduzca su contraseña. ">
-                    <!--Validaciones de los campos-->
-                    <div *ngIf = "formularioUsuario.controls['Contrasena'].invalid && formularioUsuario.controls['Contrasena'].dirty" role="alert" class="alert alert-danger">
-                        <span *ngIf = "formularioUsuario.controls['Contrasena'].errors.required" >Se requiere el uso de una contraseña. </span>
-                    </div>                                        
-                </div>
-                <br> 
-                <button class="btn btn-primary" [disabled] = "formularioUsuario.invalid" (click) = "agregar()">Registrarse</button>
-    </form>
+<br>
+<div id="Co" class="container mt-5">
+    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 47rem;">
+        <div class="card-body">
+            <form [formGroup]="formularioUsuario" action="">
+                <div class="row"></div>
+                        <div class="form-group">
+                            <label id="no" for="">Nombre</label>
+                            <input type="text" class="form-control border-dark" formControlName="Nombre" placeholder="Introduzca su nombre. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Nombre'].invalid && formularioUsuario.controls['Nombre'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Nombre'].errors.required" >Se requiere el nombre. </span>
+                            </div>
+                        </div> 
+                        <br>
+                        <div class="form-group">
+                            <label for="">Apellido</label>
+                            <input type="text" class="form-control border-dark" formControlName="Apellido" placeholder="Introduzca su apellido. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Apellido'].invalid && formularioUsuario.controls['Apellido'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Apellido'].errors.required" >Se requiere el apellido</span>
+                            </div>                    
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Telefono</label>
+                            <input type="text" class="form-control border-dark" formControlName="Telefono" placeholder="Introduzca su apellido. ">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Numero de tarjeta o cuenta bancaria</label>
+                            <input type="text" class="form-control border-dark" formControlName="Cuentabancaria" placeholder="Introduzca su numero de cuenta o tarjeta. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Cuentabancaria'].invalid && formularioUsuario.controls['Cuentabancaria'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Cuentabancaria'].errors.required" >Se requiere su Clave Interbancaria. </span>
+                            </div>                    
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">CVC</label>
+                            <input type="text" class="form-control border-dark" formControlName="CVC" placeholder="Introduzca el CVC. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['CVC'].invalid && formularioUsuario.controls['CVC'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['CVC'].errors.required" >Se requiere su CVC. </span>
+                            </div>                    
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Correo</label>
+                            <input type="email" class="form-control border-dark" formControlName="Correo" placeholder="Introduzca su correo. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Correo'].invalid && formularioUsuario.controls['Correo'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Correo'].errors.required" >Se requiere su correo electronico. </span>
+                                <span *ngIf = "formularioUsuario.controls['Correo'].errors.email" >Su correo electronico no es valido. </span>
+                            </div>                    
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Contraseña</label>
+                            <input type="password" class="form-control border-dark" formControlName="Contraseña" placeholder="Introduzca su contraseña. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Contraseña'].invalid && formularioUsuario.controls['Contraseña'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Contraseña'].errors.required" >Se requiere el uso de una contraseña. </span>
+                            </div>                                        
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Ocupación</label>
+                            <input type="text" class="form-control border-dark" formControlName="Ocupación" placeholder="Introduzca su ocupación cliente o propietario. ">
+                            <!--Validaciones de los campos-->
+                            <div *ngIf = "formularioUsuario.controls['Ocupación'].invalid && formularioUsuario.controls['Ocupación'].dirty" role="alert" class="alert alert-danger">
+                                <span *ngIf = "formularioUsuario.controls['Ocupación'].errors.required" >Se requiere que escriba cliente o propietario </span>
+                            </div>                                        
+                        </div>
+                        
+
+                        <br> 
+                        <button id="l" type="text" class="btn btn-secondary" routerLink="">Cancelar</button>
+                        <button class="btn btn-primary" [disabled] = "formularioUsuario.invalid" (click) = "agregar()" routerLink="/iniciar-sesion">Registrarse</button>
+            </form>
+        </div>
+    </div>
 </div>
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //Importaremos AngularFirestore y AngularFireStorage
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agregar-usuarios',
@@ -15,7 +16,7 @@ export class AgregarUsuariosComponent implements OnInit {
   formularioUsuario:FormGroup;
 
   //Establezco la validacion para el formulario
-  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(private toars: ToastrService,private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore) { }
 
   ngOnInit(){
     this.formularioUsuario = this.fb.group({
@@ -24,9 +25,10 @@ export class AgregarUsuariosComponent implements OnInit {
       Apellido: ['', Validators.required],
       Telefono: [''],
       Cuentabancaria: ['', Validators.required],
-      CVC: [''],
+      CVC: ['', Validators.required],
       Correo: ['', Validators.compose([Validators.required,Validators.email])],
-      Contrasena: ['', Validators.required],
+      Contraseña: ['', Validators.required],
+      Ocupación: ['',Validators.required],
     })
   }
 
@@ -34,8 +36,9 @@ export class AgregarUsuariosComponent implements OnInit {
   agregar(){
     console.log(this.formularioUsuario.value);
     this.db.collection('Usuarios').add(this.formularioUsuario.value).then((finalizado)=>{
-      console.log("Se ha creado el registro. ");
     })
+    this.toars.success("Registro exitoso");
+
   }
 
 }
