@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agregarpropiedad',
@@ -9,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./agregarpropiedad.component.css']
 })
 export class AgregarpropiedadComponent implements OnInit {
+
+  correo="";
 
   //Crearemos el objeto del tipo formGroup
   formularioPropiedad: FormGroup;
@@ -18,7 +22,9 @@ export class AgregarpropiedadComponent implements OnInit {
 
   //Inyectamos el form-builder
   //Inyectamos el Firestore
-  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore){
+  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore,private aRout: ActivatedRoute,
+    private toast: ToastrService){
+    this.correo=this.aRout.snapshot.paramMap.get('correo');
 
    }
 
@@ -31,7 +37,8 @@ export class AgregarpropiedadComponent implements OnInit {
       Cuartos:['', Validators.required],
       Costo:['', Validators.required],
       Estrellas:['',Validators.required],
-      img:['', Validators.required]   
+      img:['', Validators.required],
+      Dueño:[this.correo]   
     })
   }
 
@@ -46,6 +53,7 @@ export class AgregarpropiedadComponent implements OnInit {
     this.db.collection('casas').add(this.formularioPropiedad.value).then((finalizado)=>{
       console.log('Registro creado. ')
     })
+    this.toast.success("Casa añadida exitosamente");
   }
 
   //Viendo como se agregan las imagenes 

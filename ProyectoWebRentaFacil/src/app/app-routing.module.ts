@@ -29,10 +29,10 @@ const routes: Routes = [
     {path: 'cliente-catalogo', component: ClienteCatalogoComponent},
     //Ruta para borrar usuarios
     {path:'borrar-usuario',component: BorrarUsuarioComponent},
+    //Ruta para agregar una casa
+    {path:'agregar-casa/:correo',component: AgregarpropiedadComponent},
     //Ruta para editar una casa
     {path:'editar-casa/:correo/:id',component: EditarCasaComponent},
-    //Ruta para agregar una casa
-    {path:'agregar-casa',component: AgregarpropiedadComponent},
 
 ];
 

@@ -10,15 +10,17 @@ import {ServicioService} from 'src/app/Servicios/servicio.service'
 })
 export class ClienteCatalogoComponent implements OnInit {
   casas: any[]=[];
+  casasPro: any[]=[];
   correo:string | null;
   ocu="";
-  dato=""
+  dato="";
   constructor(private aRout: ActivatedRoute, private _casasService: ServicioService) {
     this.correo=this.aRout.snapshot.paramMap.get('correo');
     //console.log(this.correo);
   }
 
   ngOnInit(): void {
+      this.casasPropietario();
       this.getCasas()
       this.getveri();
   }
@@ -36,6 +38,21 @@ export class ClienteCatalogoComponent implements OnInit {
     });
   }
 
+  casasPropietario()
+  {
+    this._casasService.getCasasPro(this.correo).subscribe( data => {
+      this.casasPro=[];
+      data.forEach((element:any) => {
+        this.casasPro.push({
+          id: element.payload.doc.id,
+          //imagen: element.payload.doc.img,
+          ...element.payload.doc.data(),
+        })
+      });
+      console.log(this.casasPro);
+    });
+  }
+  
   getveri()
   {
     console.log(this.correo);

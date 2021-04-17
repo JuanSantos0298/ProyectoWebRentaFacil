@@ -21,6 +21,12 @@ export class ServicioService {
   return this.firestore.collection('casas').snapshotChanges();
   }
 
+    //Servicio para casas de propietarios
+    getCasasPro(correo: string): Observable<any>
+    {
+    return this.firestore.collection('casas',ref => ref.where("Dueño","==",correo)).snapshotChanges();
+    }
+
   //Servicio de validación
   getOcu(corre: string): Observable<any>
   {
