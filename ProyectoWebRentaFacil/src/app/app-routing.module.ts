@@ -7,6 +7,7 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 import {BorrarUsuarioComponent} from './borrar-usuario/borrar-usuario/borrar-usuario.component';
 import {EditarCasaComponent} from './editar-casa/editar-casa.component';
+import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
 
 
 
@@ -30,6 +31,8 @@ const routes: Routes = [
     {path:'borrar-usuario',component: BorrarUsuarioComponent},
     //Ruta para editar una casa
     {path:'editar-casa/:correo/:id',component: EditarCasaComponent},
+    //Ruta para agregar una casa
+    {path:'agregar-casa',component: AgregarpropiedadComponent},
 
 ];
 

@@ -20,6 +20,8 @@ import { BorrarUsuarioComponent } from './borrar-usuario/borrar-usuario/borrar-u
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 import { EditarCasaComponent } from './editar-casa/editar-casa.component';
+import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,16 @@ import { EditarCasaComponent } from './editar-casa/editar-casa.component';
     BorrarUsuarioComponent,
     IniciarSesionComponent,
     ClienteCatalogoComponent,
-    EditarCasaComponent
+    EditarCasaComponent,
+    AgregarpropiedadComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     FormsModule,
+    //Importamos FireStorage para subir las imagenes
+    AngularFireStorageModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     
