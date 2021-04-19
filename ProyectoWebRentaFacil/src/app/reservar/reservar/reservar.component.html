@@ -1,0 +1,71 @@
+<div id="Co" class="container mt-5">
+    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 47rem;">
+        <div class="card-body">
+            <form [formGroup]="formularioReserva" action="">
+                <div class="row"></div>
+                <div class="form-group">
+                    <label for="">Numero de tarjeta o cuenta bancaria</label>
+                    <input type="text" class="form-control border-dark" formControlName="Cuentabancaria"
+                        placeholder="Introduzca su numero de cuenta o tarjeta. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioReserva.controls['Cuentabancaria'].invalid && formularioReserva.controls['Cuentabancaria'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioReserva.controls['Cuentabancaria'].errors.required">Se requiere su Clave
+                            Interbancaria. </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="">CVC</label>
+                    <input type="text" class="form-control border-dark" formControlName="CVC"
+                        placeholder="Introduzca el CVC. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioReserva.controls['CVC'].invalid && formularioReserva.controls['CVC'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioReserva.controls['CVC'].errors.required">Se requiere su CVC. </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="">Correo</label>
+                    <input type="email" class="form-control border-dark" formControlName="Correo"
+                        placeholder="Introduzca su correo. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioReserva.controls['Correo'].invalid && formularioReserva.controls['Correo'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioReserva.controls['Correo'].errors.required">Se requiere su correo
+                            electronico. </span>
+                        <span *ngIf="formularioReserva.controls['Correo'].errors.email">Su correo electronico no es
+                            valido. </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="">Fecha de entrada</label>
+                    <input type="text" class="form-control border-dark" formControlName="entrada"
+                        placeholder="dd/mm/aaaa">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioReserva.controls['entrada'].invalid && formularioReserva.controls['entrada'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioReserva.controls['entrada'].errors.required">Se requiere la fecha de entrada. </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="">Fecha de salida</label>
+                    <input type="text" class="form-control border-dark" formControlName="salida"
+                        placeholder="dd/mm/aaaa">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioReserva.controls['salida'].invalid && formularioReserva.controls['salida'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioReserva.controls['salida'].errors.required">Se requiere la fecha de salida.</span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <button id="l" type="text" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                <button class="btn btn-primary" (click)="reservar()">Reservar</button>
+            </form>
+        </div>
+    </div>
+</div>
