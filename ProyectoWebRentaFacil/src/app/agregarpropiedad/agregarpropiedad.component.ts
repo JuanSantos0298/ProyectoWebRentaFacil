@@ -18,7 +18,7 @@ export class AgregarpropiedadComponent implements OnInit {
   formularioPropiedad: FormGroup;
 
   //Obtenemos la URL de la imagen
-  urlImagen: string = ''
+  urlImagen= ''
 
   //Inyectamos el form-builder
   //Inyectamos el Firestore
@@ -37,8 +37,8 @@ export class AgregarpropiedadComponent implements OnInit {
       Cuartos:['', Validators.required],
       Costo:['', Validators.required],
       Estrellas:['',Validators.required],
-      img:['', Validators.required],
-      Dueño:[this.correo]   
+      img:[this.urlImagen],
+      Dueño:[this.correo],   
     })
   }
 
@@ -47,11 +47,11 @@ export class AgregarpropiedadComponent implements OnInit {
     console.log(this.formularioPropiedad.value)
 
     //Cambiamos el nombre de la imagen
-    this.formularioPropiedad.value.img = this.urlImagen
+    this.formularioPropiedad.value.img = this.urlImagen;
 
     //conexion con la coleccion 
     this.db.collection('casas').add(this.formularioPropiedad.value).then((finalizado)=>{
-      console.log('Registro creado. ')
+      console.log('Registro creado. ');
     })
     this.toast.success("Casa añadida exitosamente");
   }
@@ -60,21 +60,21 @@ export class AgregarpropiedadComponent implements OnInit {
   subirImagen(evento){
 
     //Establecemos el nombre con la fecha en que se sube para que cada vez que se suba una imagen no se sobreescriba 
-    let nombre = new Date().getTime().toString()
-    let archivo = evento.target.files[0]
+    let nombre = new Date().getTime().toString();
+    let archivo = evento.target.files[0];
 
     console.log(nombre)
 
     //Establecemos la extension para que cada que se suba la imagen se cree otra nueva
 
-    console.log(archivo.name.toString().substring(archivo.name.toString().lastIndexOf('.')))
+    console.log(archivo.name.toString().substring(archivo.name.toString().lastIndexOf('.')));
 
-    let extension = archivo.name.toString().substring(archivo.name.toString().lastIndexOf('.'))
+    let extension = archivo.name.toString().substring(archivo.name.toString().lastIndexOf('.'));
 
     //Establecemos en la ruta y ademas como se van a llamar las imagenes
-    let ruta = 'propietario/' + nombre + extension;
-    const referencia = this.storage.ref(ruta)
-    const tarea = referencia.put(archivo)
+    let ruta = 'images/' + nombre + extension;
+    const referencia = this.storage.ref(ruta);
+    const tarea = referencia.put(archivo);
 
     //Verificamos que se haya subido la imagen
     tarea.then((objeto)=>{
@@ -82,12 +82,20 @@ export class AgregarpropiedadComponent implements OnInit {
 
       //Obtenemos la URL para jalar las imagenes a la base de datos
       referencia.getDownloadURL().subscribe((url)=>{
-        console.log(url)
-        this.urlImagen = url
+        //console.log(url)
+        this.urlImagen = url;
+        this.ver(this.urlImagen);
+        
     })
 
     })
 
+  }
+
+  ver(img: string)
+  {
+    this.urlImagen=img;
+    console.log(this.urlImagen);
   }
 
 }

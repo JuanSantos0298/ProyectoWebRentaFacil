@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ServicioService} from 'src/app/Servicios/servicio.service'
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cliente-catalogo',
@@ -14,7 +14,8 @@ export class ClienteCatalogoComponent implements OnInit {
   correo:string | null;
   ocu="";
   dato="";
-  constructor(private aRout: ActivatedRoute, private _casasService: ServicioService, private ruta: Router) {
+  constructor(private aRout: ActivatedRoute, private _casasService: ServicioService, private ruta: Router,
+    private toast: ToastrService) {
     this.correo=this.aRout.snapshot.paramMap.get('correo');
     //console.log(this.correo);
   }
@@ -79,5 +80,16 @@ export class ClienteCatalogoComponent implements OnInit {
 
   reservar(id:string){
     this.ruta.navigate(['/reservar/'+this.correo+'/'+id]);
+  }
+
+  eliminarCasa(id:string){
+    this._casasService.eliminarCasa(id).then(()=> {
+      console.log('Casa eliminada exitosamente');
+    }).catch(error => {
+      console.log(error);
+    })
+    this.toast.success("La casa fue eliminada con exito","Casa eliminada",{
+      positionClass:'toast-buttom-right'
+    });
   }
 }

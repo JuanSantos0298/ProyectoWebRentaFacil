@@ -66,4 +66,10 @@ export class ServicioService {
       return this.firestore.collection("casas").doc(id).valueChanges();
     }
 
+    //servicio de eliminar casa
+    eliminarCasa(id:string): Promise <any> {
+      return this.firestore.collection("casas").doc(id).delete();
+    }
+  
+
 }
