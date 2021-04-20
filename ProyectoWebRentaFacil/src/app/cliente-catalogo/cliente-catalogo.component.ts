@@ -88,8 +88,6 @@ export class ClienteCatalogoComponent implements OnInit {
     }).catch(error => {
       console.log(error);
     })
-    this.toast.success("La casa fue eliminada con exito","Casa eliminada",{
-      positionClass:'toast-buttom-right'
-    });
+    this.toast.success("La casa fue eliminada con exito","Casa eliminada");
   }
 }

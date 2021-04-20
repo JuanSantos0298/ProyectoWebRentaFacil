@@ -30,9 +30,9 @@ export class ReservarComponent implements OnInit {
       this.id = this.aRout.snapshot.paramMap.get('id');
 
       this.formularioReserva = fb.group({
-      Cuentabancaria: ['', Validators.required],
+      Cuentabancaria: ['',Validators.required],
       CVC: ['', Validators.required],
-      Correo: ['', Validators.compose([Validators.required, Validators.email])],
+      Correo: [this.correo],
       entrada: ['', Validators.required],
       salida: ['', Validators.required]
     })
@@ -53,6 +53,7 @@ export class ReservarComponent implements OnInit {
       this.ubicacion = cas.Ubicacion;
       this.cvv = datos.CVC;
       this.cuenta = datos.Cuentabancaria;
+      this.llenar(this.cuenta);
       this.verificarDatos(this.correo, this.formularioReserva.value.Correo, this.cuenta, this.formularioReserva.value.Cuentabancaria, this.cvv, this.formularioReserva.value.CVC);
     })
   }
@@ -75,6 +76,13 @@ export class ReservarComponent implements OnInit {
     } else {
       this.toastr.error("Correo no coincide");
     }
+    this.ruta.navigate(['/mis-rentas/'+this.correo]);
+  }
+
+  llenar(a: any)
+  {
+    this.cuenta=a;
+    console.log(this.cuenta);
   }
 
   //funcion de cancelar reserva

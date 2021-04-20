@@ -23,6 +23,7 @@ import { EditarCasaComponent } from './editar-casa/editar-casa.component';
 import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ReservarComponent } from './reservar/reservar.component';
+import { MisRentasComponent } from './mis-rentas/mis-rentas.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReservarComponent } from './reservar/reservar.component';
     ClienteCatalogoComponent,
     EditarCasaComponent,
     AgregarpropiedadComponent,
-    ReservarComponent
+    ReservarComponent,
+    MisRentasComponent
   ],
   imports: [
     BrowserModule,

@@ -71,5 +71,10 @@ export class ServicioService {
       return this.firestore.collection("casas").doc(id).delete();
     }
   
+    //visualizas rentas
+    visualizarRenta(correo: string): Observable<any> 
+    {
+      return this.firestore.collection("casaReservada", ref=>ref.where("Cliente",'==',correo)).snapshotChanges();
+    }
 
 }
