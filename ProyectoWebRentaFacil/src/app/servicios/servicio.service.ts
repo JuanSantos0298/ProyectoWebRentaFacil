@@ -43,4 +43,27 @@ export class ServicioService {
     return this.firestore.collection("casas").doc(id).update(data);
   }
 
+  crearReser(id:string, prop:string, rent: string, est: string, mun: string, ub: string, ent: string, sal: string){
+    this.firestore.collection("casaReservada").add({
+      id: id,
+      Estado: est,
+      Municipio: mun,
+      Ubicacion: ub,
+      Dueño: prop,
+      Cliente: rent,
+      Entrada: ent,
+      Salida: sal
+    }).then((finalizado) =>{})
+  }
+
+  //servicio para obtener datos bancarios
+  getdatosBanc(correo: string):Observable<any>{
+    return this.firestore.collection("Usuarios",ref=> ref.where("Correo","==",correo)).valueChanges();
+  }
+
+    //servicio de casa para reservar
+    getCasa(id: string):Observable<any>{
+      return this.firestore.collection("casas").doc(id).valueChanges();
+    }
+
 }

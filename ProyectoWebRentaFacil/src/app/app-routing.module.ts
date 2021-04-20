@@ -8,6 +8,7 @@ import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.co
 import {BorrarUsuarioComponent} from './borrar-usuario/borrar-usuario/borrar-usuario.component';
 import {EditarCasaComponent} from './editar-casa/editar-casa.component';
 import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
+import { ReservarComponent } from './reservar/reservar.component';
 
 
 
@@ -33,6 +34,8 @@ const routes: Routes = [
     {path:'agregar-casa/:correo',component: AgregarpropiedadComponent},
     //Ruta para editar una casa
     {path:'editar-casa/:correo/:id',component: EditarCasaComponent},
+    //ruta para reservar
+    {path: 'reservar/:correo/:id', component: ReservarComponent}
 
 ];
 

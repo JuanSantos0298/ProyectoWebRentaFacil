@@ -22,6 +22,7 @@ import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.co
 import { EditarCasaComponent } from './editar-casa/editar-casa.component';
 import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ReservarComponent } from './reservar/reservar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     IniciarSesionComponent,
     ClienteCatalogoComponent,
     EditarCasaComponent,
-    AgregarpropiedadComponent
+    AgregarpropiedadComponent,
+    ReservarComponent
   ],
   imports: [
     BrowserModule,

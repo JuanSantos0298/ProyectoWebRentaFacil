@@ -14,7 +14,7 @@ export class ClienteCatalogoComponent implements OnInit {
   correo:string | null;
   ocu="";
   dato="";
-  constructor(private aRout: ActivatedRoute, private _casasService: ServicioService) {
+  constructor(private aRout: ActivatedRoute, private _casasService: ServicioService, private ruta: Router) {
     this.correo=this.aRout.snapshot.paramMap.get('correo');
     //console.log(this.correo);
   }
@@ -75,5 +75,9 @@ export class ClienteCatalogoComponent implements OnInit {
       this.dato="Propietario";
       console.log(this.dato);
     }
+  }
+
+  reservar(id:string){
+    this.ruta.navigate(['/reservar/'+this.correo+'/'+id]);
   }
 }
