@@ -6,9 +6,7 @@ import { VentanaInicioPrincipalComponent } from './ventana-inicio-principal/vent
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 import {BorrarUsuarioComponent} from './borrar-usuario/borrar-usuario/borrar-usuario.component';
-import {EditarCasaComponent} from './editar-casa/editar-casa.component';
-import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
-
+import { ReservarComponent } from './reservar/reservar/reservar.component';
 
 
 //Establezco las rutas de las paginas de los componentes que voy a usar para el cambio entre paginas
@@ -29,10 +27,8 @@ const routes: Routes = [
     {path: 'cliente-catalogo', component: ClienteCatalogoComponent},
     //Ruta para borrar usuarios
     {path:'borrar-usuario',component: BorrarUsuarioComponent},
-    //Ruta para agregar una casa
-    {path:'agregar-casa/:correo',component: AgregarpropiedadComponent},
-    //Ruta para editar una casa
-    {path:'editar-casa/:correo/:id',component: EditarCasaComponent},
+    //Ruta para reservar
+    {path: 'reservar/:correo/:id', component: ReservarComponent}
 
 ];
 
