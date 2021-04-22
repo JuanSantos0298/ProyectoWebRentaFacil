@@ -24,15 +24,26 @@ export class MisRentasComponent implements OnInit {
   tabla()
   {
     this._rentas.visualizarRenta(this.correo).subscribe((data: any)=>{
-      console.log(data);
       this.rentas=[];
       data.forEach((elemnt:any)=>{
         this.rentas.push({
+          iden: elemnt.payload.doc.id,
           ...elemnt.payload.doc.data(),
         })
       });
       console.log(this.rentas);
     })
+  }
+
+  eliminar(iden:string)
+  {
+    console.log(iden);
+    this._rentas.eliminarrenta(iden).then(()=> {
+      console.log('Reservación eliminada exitosamente');
+    }).catch(error => {
+      console.log(error);
+    })
+    this.toas.success("La reservación se elimino","Reservación eliminada");
   }
 
 }

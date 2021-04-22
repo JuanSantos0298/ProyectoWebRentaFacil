@@ -77,4 +77,10 @@ export class ServicioService {
       return this.firestore.collection("casaReservada", ref=>ref.where("Cliente",'==',correo)).snapshotChanges();
     }
 
+    //eliminar renta
+    eliminarrenta(iden:string): Promise <any> 
+    {
+      return this.firestore.collection("casaReservada").doc(iden).delete();
+    }
+
 }

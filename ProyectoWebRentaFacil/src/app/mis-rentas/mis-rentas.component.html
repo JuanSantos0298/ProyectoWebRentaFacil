@@ -15,7 +15,7 @@
                     <td>{{reserva.Ubicacion}} {{reserva.Municipio}}, {{reserva.Estado}}</td>
                     <td>{{reserva.Entrada}}</td>
                     <td>{{reserva.Salida}}</td>
-                    <td><button class="eliminar fas fa-trash border border-0">Eliminar</button></td>
+                    <td><button class="eliminar fas fa-trash border border-0" (click)="eliminar(reserva.iden)">Eliminar</button></td>
                     <!--<td><button class="fas fa-edit border border-0">Editar</button></td>-->
                 </tr>
             </tbody>
