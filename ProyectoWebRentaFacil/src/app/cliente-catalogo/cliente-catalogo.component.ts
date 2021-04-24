@@ -14,6 +14,8 @@ export class ClienteCatalogoComponent implements OnInit {
   correo:string | null;
   ocu="";
   dato="";
+  va='none';
+  im='';
   constructor(private aRout: ActivatedRoute, private _casasService: ServicioService, private ruta: Router,
     private toast: ToastrService) {
     this.correo=this.aRout.snapshot.paramMap.get('correo');
@@ -60,20 +62,23 @@ export class ClienteCatalogoComponent implements OnInit {
     this._casasService.getOcu(this.correo).subscribe((data:any) =>
       {
         this.ocu=data[0]["Ocupación"];
-        this.compro(this.ocu);
+        this.im=data[0]["imagen"];
+        this.compro(this.ocu,this.im);
       })
   }
 
-  compro(ocu: string)
+  compro(ocu: string, ima: string)
   {
     if(ocu == "Cliente")
     {
       this.dato="Cliente";
+      this.im=ima;
       console.log(this.dato);
     }
     else
     {
       this.dato="Propietario";
+      this.im=ima;
       console.log(this.dato);
     }
   }

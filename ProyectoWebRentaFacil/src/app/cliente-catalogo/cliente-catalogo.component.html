@@ -1,24 +1,24 @@
 <br><div class="conte" *ngIf="dato=='Cliente'"><br>
-  <div class="menu"><button class="perfil" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-user-circle fa-lg"></i>  Mi perfil
-  </button>
-  <button class="perfil" style="float:right; margin-right:10px;" routerLink=""><i class="fas fa-sign-out-alt fa-lg"></i>  Cerrar sesión</button>
-   </div>
-  <div class="list collapse" id="collapseExample"> 
-       <ul class="nav flex-column">
-         <li class="nav-item">
-           <button class="enlaces" routerLink="/cliente-catalogo/correo"><i class="fas fa-home fa-lg"></i> Catalogo</button>
-         </li>
-         <br>
-         <li class="nav-item">
-           <button class="enlaces" routerLink="/mis-rentas/{{correo}}"><i class="fas fa-calendar-day"></i> Mis reservaciones</button>
-         </li>
-         <br>
-         <li class="nav-item">
-           <button class="enlaces" routerLink=""><i class="fas fa-sign-out-alt fa-lg"></i> Cerrar sesión</button>
-         </li>
-       </ul>
+  <div class="menu">
+  <br>
+  <div class="dropdown">
+    <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;" routerLink=""> Cerrar sesión</button>
+    <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fas fa-user-circle fa-lg" id="icono" *ngIf="im == ''"></i>
+      <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''" > 
+      Mi perfil
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it> Catalogo</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar mi perfil</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-calendar-day fa-lg text-light" href="/mis-rentas/{{correo}}" id=it> Mis reservaciones</a></li>
+      <br>
+      <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+    </ul>
     </div>
+   </div>
     <br>
   <form class="for">
     <input class="buscador" type="search" placeholder="Estado" aria-label="Search">
@@ -75,28 +75,26 @@
 </div>
 
 <br><div class="conte" *ngIf="dato=='Propietario'">
-  <div class="menu"><button class="perfil" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-user-circle fa-lg"></i>  Mi perfil
-  </button>
-  <button class="perfil" style="float:right; margin-right:10px;" routerLink=""><i class="fas fa-sign-out-alt fa-lg"></i>  Cerrar sesión</button>
-   </div>
-  <div class="list collapse" id="collapseExample"> 
-       <ul class="nav flex-column">
-         <li class="nav-item">
-           <button class="enlaces" routerLink="/cliente-catalogo/{{correo}}"><i class="fas fa-home fa-lg"></i>  Mis casas</button>
-         </li>
-         <br>
-         <li class="nav-item">
-           <button class="enlaces"><i class="fas fa-handshake fa-lg"></i> Mis pagos</button>
-         </li>
-         <br>
-         <li class="nav-item">
-           <button class="enlaces" routerLink=""><i class="fas fa-sign-out-alt fa-lg"></i> Cerrar sesión</button>
-         </li>
-       </ul>
+    <div class="menu" style="width: 1536px;">
+      <br>
+      <div class="dropdown">
+        <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;" routerLink=""> Cerrar sesión</button>
+        <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle" id="icono" *ngIf="im == ''"></i>
+          <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''" > 
+          Mi perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it>Mis casas</a></li>
+          <br>
+          <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar mi perfil</a></li>
+          <br>
+          <li><a class="dropdown-item fas fa-file-invoice-dollar fa-lg text-light" href="" id=it> Mis ganancias</a></li>
+          <br>
+          <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+        </ul>
+      </div>
     </div>
-    <br>
-  <button class="subir fas fa-cloud-upload-alt" routerLink="/agregar-casa/{{correo}}">  Añadir casa</button> 
   <br>
   <form class="for">
     <input class="buscador" type="search" placeholder="Estado" aria-label="Search">

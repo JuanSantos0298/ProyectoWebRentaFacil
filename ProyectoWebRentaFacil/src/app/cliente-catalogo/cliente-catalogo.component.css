@@ -110,11 +110,11 @@
     border-color: grey;
 }
 .perfil{
-    margin-top:22px;
     background-color: transparent;
     color:white;
     border:0px;
     padding:5px;
+    margin-top: 9px;
 }
 .menu{
     width: 1519px;
@@ -136,4 +136,45 @@ i{
     float:left;
     padding: 0px;
     margin:0px;
+}
+
+.dropdown{
+    text-align: left;
+    background-color: transparent;
+}
+
+.dropdown-menu
+{
+    text-align: left;
+    background-color:#215564;
+    text-decoration: none;
+}
+.dropdown-item:hover
+{
+    text-decoration:none;
+
+}
+
+#dropdownMenuButton1
+{
+    background-color: transparent;
+    border: none;
+    margin-top: 9px;
+}
+
+#it
+{
+    color: transparent;
+    background-color: transparent;
+}
+
+#imagenperfil
+{
+    height: 30px; 
+    width: 30px; 
+}
+
+#icono
+{
+    margin-bottom: 9px;
 }

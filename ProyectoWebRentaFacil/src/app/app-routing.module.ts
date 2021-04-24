@@ -10,6 +10,7 @@ import {EditarCasaComponent} from './editar-casa/editar-casa.component';
 import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
 import { ReservarComponent } from './reservar/reservar.component';
 import { MisRentasComponent } from './mis-rentas/mis-rentas.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 
 
 
@@ -39,6 +40,9 @@ const routes: Routes = [
     {path: 'reservar/:correo/:id', component: ReservarComponent},
     //ruta para ver rentas
     {path: 'mis-rentas/:correo', component: MisRentasComponent},
+     //ruta para editar perfil
+     {path: 'editarPerfil/:correo', component: EditarPerfilComponent},
+
 
 ];
 

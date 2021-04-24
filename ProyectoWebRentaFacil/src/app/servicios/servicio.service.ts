@@ -83,4 +83,16 @@ export class ServicioService {
       return this.firestore.collection("casaReservada").doc(iden).delete();
     }
 
+    //obtener datos y id de la persona
+    obtenerid(correo: string): Observable<any>
+    {
+      return this.firestore.collection("Usuarios",ref => ref.where("Correo","==",correo)).snapshotChanges();
+    }
+
+    //actualizar la información de un usuario
+    ActualizarUsuario(id: string,data: any): Promise <any>
+    {
+      return this.firestore.collection("Usuarios").doc(id).update(data);
+    }
+
 }
