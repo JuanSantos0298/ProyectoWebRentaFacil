@@ -1,0 +1,24 @@
+<br><br><br><br><div id="ta" class="content" style="padding: 24px;">
+    <h3 class="text-center">Reservaciones activas</h3>
+    <div class="border-dark"fxLayout="row wrap" fxLayoutGap="24px grid">
+        <table class="table table-hover border-dark">
+            <thead class="border-dark">
+                <tr>
+                    <th scope="col">Datos de la casa</th>
+                    <th scope="col">Fecha de entrada</th>
+                    <th scope="col">Fecha de salida</th>
+                    <th scope="col">Cancelar renta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active" *ngFor="let reserva of rentas">
+                    <td>{{reserva.Ubicacion}} {{reserva.Municipio}}, {{reserva.Estado}}</td>
+                    <td>{{reserva.Entrada}}</td>
+                    <td>{{reserva.Salida}}</td>
+                    <td><button class="eliminar fas fa-trash border border-0" (click)="eliminar(reserva.iden)">Eliminar</button></td>
+                    <!--<td><button class="fas fa-edit border border-0">Editar</button></td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div id="Co" class="container mt-5">
+    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 50rem;">
+        <div class="card-body">
+            <h3>Agregar propiedad</h3>
+            <form [formGroup]="formularioPropiedad" action="">
+                <!--Direccion-->
+                <div class="form-group">
+                    <label for="">Direccion</label>
+                    <input type="text" class="form-control border-dark" formControlName="Ubicacion" placeholder="Escriba la direccion. ">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Ubicacion'].invalid && formularioPropiedad.controls['Ubicacion'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Ubicacion'].errors.required" >Se requiere la direccion de la propiedad.</span>
+                </div>               
+                </div>
+                <!--Municipio--> <br>
+                <div class="form-group">
+                    <label for="">Municipio</label>
+                    <input type="text" class="form-control border-dark" formControlName="Municipio" placeholder="Escriba el municipio donde se ubica la propiedad.">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Municipio'].invalid && formularioPropiedad.controls['Municipio'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Municipio'].errors.required" >Se requiere el municipio donde se ubica la propiedad.</span>
+                </div>              
+                </div>
+                <!--Estado--> <br>
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <input type="text" class="form-control border-dark" formControlName="Estado" placeholder="Escriba el estado donde se ubica la propiedad.">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Estado'].invalid && formularioPropiedad.controls['Estado'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Estado'].errors.required" >Se requiere el estado donde se ubica la propiedad.</span>
+                </div>              
+                </div>
+                <!--Descripcion--> <br>
+                <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <input type="text" class="form-control border-dark" formControlName="Descripcion" placeholder="Escriba una breve descripcion de la propiedad. ">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Descripcion'].invalid && formularioPropiedad.controls['Descripcion'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Descripcion'].errors.required" >Se requiere una breve descripcion de la propiedad.</span>
+                </div>              
+                </div>        
+                <!--Numero de habitaciones-->
+                <div class="form-group"> <br>
+                    <label for="">Numero de habitaciones</label>
+                    <input type="number" class="form-control border-dark" formControlName="Cuartos" placeholder="Escriba el numero de habitaciones que posee la propiedad. ">
+                            <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Cuartos'].invalid && formularioPropiedad.controls['Cuartos'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Cuartos'].errors.required" >Se requiere establecer el numero de habitaciones de la propiedad.</span>
+                </div>  
+                </div>
+                <!--Costo--> <br>
+                <div class="form-group">
+                    <label for="">Costo</label>
+                    <input type="number" class="form-control border-dark" formControlName="Costo" placeholder="Escriba costo por renta de la propiedad.">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Costo'].invalid && formularioPropiedad.controls['Costo'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Costo'].errors.required" >Se requiere establecer el costo de renta de la propiedad.</span>
+                </div>              
+                </div>
+                <!--Calificacion--> <br>
+                <div class="form-group">
+                    <label for="">Calificacion</label>
+                    <input type="number" class="form-control border-dark" formControlName="Estrellas" placeholder="Inserte la calificacion de la propiedad segun el numero de estrellas que posea.">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['Estrellas'].invalid && formularioPropiedad.controls['Estrellas'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['Estrellas'].errors.required" >Se requiere establecer la calificacion de la propiedad.</span>
+                </div>              
+                </div>
+                <!--Imagen--> <br>
+                <div class="form-group">
+                    <label for="">Imagen promocional </label>
+                    <br>
+                    <input type="file" (change) = "subirImagen($event)" class="form-control-file border-dark" formControlName="img" placeholder="Inserte una imagen promocional de la propiedad. ">
+                <!--Validaciones de los campos-->
+                <div *ngIf = "formularioPropiedad.controls['img'].invalid && formularioPropiedad.controls['img'].dirty" role="alert" class="alert alert-danger">
+                    <span *ngIf = "formularioPropiedad.controls['img'].errors.required" >Se requiere establecer una imagen promocional de la propiedad.</span>
+                </div>              
+                </div>     
+                <br>
+                        <button id="l" type="text" class="btn btn-secondary" routerLink="/cliente-catalogo/{{correo}}">Cancelar</button>
+                        <button class="btn btn-primary" [disabled] = "formularioPropiedad.invalid"(click) = "AgregarPropiedad()">Agregar</button>
+            </form>
+        </div>
+    </div>
+</div>
+

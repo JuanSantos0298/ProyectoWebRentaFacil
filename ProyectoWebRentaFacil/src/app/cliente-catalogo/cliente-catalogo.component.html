@@ -1,4 +1,25 @@
-<br><div class="conte" *ngIf="dato=='Cliente'"><br><br><br><br>
+<br><div class="conte" *ngIf="dato=='Cliente'"><br>
+  <div class="menu">
+  <br>
+  <div class="dropdown">
+    <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;" routerLink=""> Cerrar sesión</button>
+    <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fas fa-user-circle fa-lg" id="icono" *ngIf="im == ''"></i>
+      <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''" > 
+      Mi perfil
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it> Catalogo</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar mi perfil</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-calendar-day fa-lg text-light" href="/mis-rentas/{{correo}}" id=it> Mis reservaciones</a></li>
+      <br>
+      <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+    </ul>
+    </div>
+   </div>
+    <br>
   <form class="for">
     <input class="buscador" type="search" placeholder="Estado" aria-label="Search">
     <button class="busca" type="submit">Buscar</button>
@@ -12,8 +33,8 @@
       </div>
       <div class="carousel-inner" >
         <div class="carousel-item active" >
-          <img src="{{casa.img}}" class="d-block w-100" alt="parte uno">
-          <div class="carousel-caption d-none d-md-block">
+          <img src="{{casa.img}}" class="d-block w-100" style="height: 300px;" alt="parte uno">
+          <div id="n" class="carousel-caption d-none d-md-block">
               <strong>{{casa.Municipio}}</strong><strong>, {{casa.Estado}}</strong><br>
               <b>${{casa.Costo}}</b>
             </div>
@@ -22,7 +43,7 @@
           <img src="{{casa.img}}" class="d-block w-100" alt="parte dos">
         </div>
         <div class="carousel-item">
-          <img src="./assets/casa2.jpg" class="d-block w-100" alt="parte 3">
+          <img src="{{casa.img}}" class="d-block w-100" alt="parte 3">
         </div>
       </div>
     </div>
@@ -43,14 +64,89 @@
       <img class="estrellas" src="./assets/Estrellas1.jpeg">
     </div>
     <div>
-      <button class="rentar">Rentar</button>
+      <button class="rentar" (click)="reservar(casa.id)">Rentar</button>
     </div>
   </div><br><br>
     <div class="comentario">
-      <i>"{{casa.Comentarios}}"</i>
+      <i>"{{casa.Descripcion}}"</i>
     </div>  
     <br><br><br><br><br><br><br>
-    
   </div> 
 </div>
-   
+
+<br><div class="conte" *ngIf="dato=='Propietario'">
+    <div class="menu" style="width: 1536px;">
+      <br>
+      <div class="dropdown">
+        <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;" routerLink=""> Cerrar sesión</button>
+        <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle" id="icono" *ngIf="im == ''"></i>
+          <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''" > 
+          Mi perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it>Mis casas</a></li>
+          <br>
+          <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar mi perfil</a></li>
+          <br>
+          <li><a class="dropdown-item fas fa-file-invoice-dollar fa-lg text-light" href="/misGanancias/{{correo}}" id=it> Mis ganancias</a></li>
+          <br>
+          <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  <br>
+  <form class="for">
+    <input class="buscador" type="search" placeholder="Estado" aria-label="Search">
+    <button class="busca fas" type="submit"><i class="fas fa-search"></i>  Buscar</button>
+  </form><br>
+<div class="casa" *ngFor ="let casa of casasPro" >
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner" >
+        <div class="carousel-item active" >
+          <img src="{{casa.img}}" class="d-block w-100" style="height: 300px;" alt="parte uno">
+          <div id="n" class="carousel-caption d-none d-md-block">
+              <strong>{{casa.Municipio}}</strong><strong>, {{casa.Estado}}</strong><br>
+              <b>${{casa.Costo}}</b>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{casa.img}}" class="d-block w-100" alt="parte dos">
+        </div>
+        <div class="carousel-item">
+          <img src="{{casa.img}}" class="d-block w-100" alt="parte 3">
+        </div>
+      </div>
+    </div>
+    <div>
+    <div class="text-center" *ngIf="casa.Estrellas==5">
+      <img class="estrellas" src="./assets/Estrellas5.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==4">
+      <img class="estrellas" src="./assets/Estrellas4.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==3">
+      <img class="estrellas" src="./assets/Estrellas3.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==2">
+      <img class="estrellas" src="./assets/Estrellas2.jpeg">
+    </div>
+    <div class="text-center" *ngIf="casa.Estrellas==1">
+      <img class="estrellas" src="./assets/Estrellas1.jpeg">
+    </div>
+    <div>
+      <button class="rentar fas fa-edit" routerLink="/editar-casa/{{correo}}/{{casa.id}}">Editar</button>
+      <button class="eliminar fas fa-trash-alt fa-lg" (click)="eliminarCasa(casa.id)">  Eliminar</button>
+    </div>
+  </div><br><br>
+    <div class="comentario">
+      <i>"{{casa.Descripcion}}"</i>
+    </div> 
+    <br><br><br><br><br><br><br>
+  </div> 
+</div>

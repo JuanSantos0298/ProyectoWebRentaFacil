@@ -6,22 +6,30 @@
     float:left;
     margin-right: 5px;
 }
-
+.subir{
+    width:120px;
+    height:30px;
+    float:left;
+    background-color:#3FEC9B;
+    font-size: 15px;
+    border-radius: 5px;
+    border:0px;
+    margin-left: 90px;
+    margin-top:6px;
+}
+.subir:hover{
+    background-color:darkslateblue;
+    color:white;
+}
 .estrellas{
     width:150px;
     height:35px;
     float:left;
 }
-.comentario{
-    width:400px;
-    height:30px;
-    text-align:left;
-    font-size: 2px;
-}
-.rentar{
+.eliminar{
     width:100px;
     height:30px;
-    background-color: rgb(189, 216, 247);
+    background-color:#20D2D2;
     color:black;
     float:right;
     font-size: 15px;
@@ -30,10 +38,52 @@
     margin-right: 5px;
     margin-top:6px;
 }
+.eliminar:hover{
+    background-color:darkslateblue;
+    color:white;
+}
+.comentario{
+    width:400px;
+    height:30px;
+    text-align:left;
+    font-size: 2px;
+    background-color: whitesmoke;
+    border-radius:5px;
+    border-color:black;
+}
+.rentar{
+    width:100px;
+    height:30px;
+    background-color:#539BF6;
+    color:black;
+    float:right;
+    font-size: 15px;
+    border-radius: 5px;
+    border:0px;
+    margin-right: 5px;
+    margin-top:6px;
+}
+.list{
+    margin-left: 0px;
+    float:left;
+    height:800px;
+    width:150px;
+    text-align:left;
+    background-color:#215564;
+    color:white;
+}
+.enlaces{
+    background-color: transparent;
+    color:white;
+    border:0px;
+    width:150px;
+    font-size:18px;
+}
+
 .busca{
     width:100px;
     height:30px;
-    background-color: rgb(189, 216, 247);
+    background-color:#3FEC9B;
     color:black;
     float:right;
     font-size: 15px;
@@ -59,6 +109,24 @@
     width:270px;
     border-color: grey;
 }
+.perfil{
+    background-color: transparent;
+    color:white;
+    border:0px;
+    padding:5px;
+    margin-top: 9px;
+}
+.menu{
+    width: 1519px;
+    height: 70px;
+    text-align: left;
+    background-color:#215564;
+}
+#n
+{
+    background-color: black;
+    opacity: 70%;
+}
 i{
     font-size:15px;
     text-align:center;
@@ -68,5 +136,45 @@ i{
     float:left;
     padding: 0px;
     margin:0px;
+}
 
+.dropdown{
+    text-align: left;
+    background-color: transparent;
+}
+
+.dropdown-menu
+{
+    text-align: left;
+    background-color:#215564;
+    text-decoration: none;
+}
+.dropdown-item:hover
+{
+    text-decoration:none;
+
+}
+
+#dropdownMenuButton1
+{
+    background-color: transparent;
+    border: none;
+    margin-top: 9px;
+}
+
+#it
+{
+    color: transparent;
+    background-color: transparent;
+}
+
+#imagenperfil
+{
+    height: 30px; 
+    width: 30px; 
+}
+
+#icono
+{
+    margin-bottom: 9px;
 }
