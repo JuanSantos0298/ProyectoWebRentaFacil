@@ -43,7 +43,7 @@ export class ServicioService {
     return this.firestore.collection("casas").doc(id).update(data);
   }
 
-  crearReser(id:string, prop:string, rent: string, est: string, mun: string, ub: string, ent: string, sal: string){
+  crearReser(id:string, prop:string, rent: string, est: string, mun: string, ub: string, ent: string, sal: string, cos: any){
     this.firestore.collection("casaReservada").add({
       id: id,
       Estado: est,
@@ -52,7 +52,8 @@ export class ServicioService {
       Dueño: prop,
       Cliente: rent,
       Entrada: ent,
-      Salida: sal
+      Salida: sal,
+      Pago: cos
     }).then((finalizado) =>{})
   }
 
@@ -95,4 +96,9 @@ export class ServicioService {
       return this.firestore.collection("Usuarios").doc(id).update(data);
     }
 
+    //visualizas ganancias
+    visualizarGanancias(correo: string): Observable<any> 
+    {
+      return this.firestore.collection("casaReservada", ref=>ref.where("Dueño",'==',correo)).snapshotChanges();
+    }
 }

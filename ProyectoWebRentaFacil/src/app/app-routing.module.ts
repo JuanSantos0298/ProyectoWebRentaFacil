@@ -11,7 +11,7 @@ import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.c
 import { ReservarComponent } from './reservar/reservar.component';
 import { MisRentasComponent } from './mis-rentas/mis-rentas.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
-
+import { MisGananciasComponent } from './mis-ganancias/mis-ganancias.component'
 
 
 //Establezco las rutas de las paginas de los componentes que voy a usar para el cambio entre paginas
@@ -42,7 +42,8 @@ const routes: Routes = [
     {path: 'mis-rentas/:correo', component: MisRentasComponent},
      //ruta para editar perfil
      {path: 'editarPerfil/:correo', component: EditarPerfilComponent},
-
+     //Ruta para ver ganancias
+     { path: 'misGanancias/:correo', component: MisGananciasComponent},
 
 ];
 

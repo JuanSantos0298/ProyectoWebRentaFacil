@@ -22,7 +22,13 @@ export class ReservarComponent implements OnInit {
   ubicacion = "";
   cvv = "";
   cuenta = "";
+  costo;
   formularioReserva: FormGroup;
+  entrada;
+  salida;
+  dif;
+  dias;
+  costDias: any;
 
   constructor(private ruta: Router, private toastr: ToastrService, private aRout: ActivatedRoute, 
     private _ReservService: ServicioService, private fb: FormBuilder) {
@@ -53,18 +59,19 @@ export class ReservarComponent implements OnInit {
       this.ubicacion = cas.Ubicacion;
       this.cvv = datos.CVC;
       this.cuenta = datos.Cuentabancaria;
-      this.llenar(this.cuenta);
-      this.verificarDatos(this.correo, this.formularioReserva.value.Correo, this.cuenta, this.formularioReserva.value.Cuentabancaria, this.cvv, this.formularioReserva.value.CVC);
+      this.costDias = cas.Costo;
+      this.verificarDatos(this.correo, this.formularioReserva.value.Correo, this.cuenta, this.formularioReserva.value.Cuentabancaria, this.cvv, this.formularioReserva.value.CVC, this.costDias);
     })
   }
 
   //funcion para verficar datos
-  verificarDatos(value1: string, value2: string, value3: string, value4: string, value5: string, value6: string,) {
+  verificarDatos(value1: string, value2: string, value3: string, value4: string, value5: string, value6: string, value7:any) {
 
     if (value1 == value2) {
       if (value3 == value4) {
         if (value5 == value6) {
-          this._ReservService.crearReser(this.id, this.dueño, this.correo, this.estado, this.municipio, this.ubicacion, this.formularioReserva.value.entrada, this.formularioReserva.value.salida);
+          this.costoRes(value7);
+          this._ReservService.crearReser(this.id, this.dueño, this.correo, this.estado, this.municipio, this.ubicacion, this.formularioReserva.value.entrada, this.formularioReserva.value.salida, this.costo);
           this.toastr.info("Reserva exitosa");
           this.cancelar();
         } else {
@@ -79,15 +86,16 @@ export class ReservarComponent implements OnInit {
     this.ruta.navigate(['/mis-rentas/'+this.correo]);
   }
 
-  llenar(a: any)
-  {
-    this.cuenta=a;
-    console.log(this.cuenta);
-  }
-
   //funcion de cancelar reserva
   cancelar() {
     this.ruta.navigate(['/cliente-catalogo/' + this.correo]);
   }
 
+  costoRes(value:any){
+    this.entrada = new Date(this.formularioReserva.value.entrada);
+    this.salida = new Date(this.formularioReserva.value.salida);
+    this.dif = (this.salida.getTime() - this.entrada.getTime());
+    this.dias = Math.ceil(this.dif / (1000 * 3600 * 24));
+    this.costo = this.dias * value;
+  }
 }

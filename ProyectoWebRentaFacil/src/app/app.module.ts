@@ -25,6 +25,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ReservarComponent } from './reservar/reservar.component';
 import { MisRentasComponent } from './mis-rentas/mis-rentas.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { MisGananciasComponent } from './mis-ganancias/mis-ganancias.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
     AgregarpropiedadComponent,
     ReservarComponent,
     MisRentasComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    MisGananciasComponent
   ],
   imports: [
     BrowserModule,
