@@ -1,23 +1,37 @@
-<br><br><br><br><div id="ta" class="content" style="padding: 24px;">
+<br><br><br><br>
+<div id="ta" class="content" style="padding: 24px;">
     <h3 class="text-center">Ganancias por reservaciones</h3>
-    <div class="border-dark"fxLayout="row wrap" fxLayoutGap="24px grid">
+    <div class="border-dark" fxLayout="row wrap" fxLayoutGap="24px grid">
         <table class="table table-hover border-dark">
             <thead class="border-dark">
                 <tr>
                     <th scope="col">Datos de la casa</th>
-                    <th scope="col">Fecha de entrada</th>
-                    <th scope="col">Fecha de salida</th>
-                    <th scope="col">Ganancias</th>
+                    <th scope="col">Fechas</th>
+                    <th scope="col">Pagos por rentas</th>
+                    <th scope="col">Ganancias totales por casa</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-active" *ngFor="let reserva of rentas">
-                    <td>{{reserva.Ubicacion}} {{reserva.Municipio}}, {{reserva.Estado}}</td>
-                    <td>{{reserva.Entrada}}</td>
-                    <td>{{reserva.Salida}}</td>
-                    <td>{{reserva.Pago}}</td>
+                <tr class="table-active" *ngFor="let reserva of arrayObjetos">
+                    <td>{{reserva.estado}}, {{reserva.municipio}}</td>
+                    <td>
+                        <ul>
+                            <li *ngFor="let fecha of reserva.fecha">
+                                {{fecha}}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li *ngFor="let rentas of reserva.rentas">
+                                {{rentas}}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>$ {{reserva.total}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <h3 class="text-center">Tu total ganado: ${{total}}</h3>
 </div>
