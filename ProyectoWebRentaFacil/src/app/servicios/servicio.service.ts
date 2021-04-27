@@ -101,4 +101,16 @@ export class ServicioService {
     {
       return this.firestore.collection("casaReservada", ref=>ref.where("Dueño",'==',correo)).snapshotChanges();
     }
+
+    //cargar comentarios servicio
+    Cacomentarios(id:string): Observable<any> 
+    {
+      return this.firestore.collection("casaComentarios",ref =>ref.where("IdCasa","==",id)).snapshotChanges();
+    }
+
+    ///cargar datos de casa
+    CaDatos(id:string): Observable<any> 
+    {
+        return this.firestore.collection("casas").doc(id).valueChanges();
+    }
 }

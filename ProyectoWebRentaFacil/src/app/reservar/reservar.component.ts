@@ -22,14 +22,29 @@ export class ReservarComponent implements OnInit {
   ubicacion = "";
   cvv = "";
   cuenta = "";
-  costo;
   formularioReserva: FormGroup;
+  //variables para obtener costos
+  costo;
   entrada;
   salida;
   dif;
   dias;
   costDias: any;
-
+  //Variables para datos casos
+  numc:any;
+  coment: any;
+  idcasa:any;
+  im:any;
+  im2:any;
+  ubi: any;
+  cost:any;
+  estrellas:any;
+  esta: any;
+  muni: any;
+  descripcion:any;
+  cuart:any;
+  due:any;
+  comentarios: any[]=[];
   constructor(private ruta: Router, private toastr: ToastrService, private aRout: ActivatedRoute, 
     private _ReservService: ServicioService, private fb: FormBuilder) {
       this.correo = this.aRout.snapshot.paramMap.get('correo');
@@ -45,6 +60,8 @@ export class ReservarComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.obtenerdator();
+    this.obtenerComentarios();
   }
 
   //funcion principal para reservar
@@ -60,6 +77,7 @@ export class ReservarComponent implements OnInit {
       this.cvv = datos.CVC;
       this.cuenta = datos.Cuentabancaria;
       this.costDias = cas.Costo;
+      this.llenar(this.cuenta);
       this.verificarDatos(this.correo, this.formularioReserva.value.Correo, this.cuenta, this.formularioReserva.value.Cuentabancaria, this.cvv, this.formularioReserva.value.CVC, this.costDias);
     })
   }
@@ -70,7 +88,7 @@ export class ReservarComponent implements OnInit {
     if (value1 == value2) {
       if (value3 == value4) {
         if (value5 == value6) {
-          this.costoRes(value7);
+	  this.costoRes(value7);
           this._ReservService.crearReser(this.id, this.dueño, this.correo, this.estado, this.municipio, this.ubicacion, this.formularioReserva.value.entrada, this.formularioReserva.value.salida, this.costo);
           this.toastr.info("Reserva exitosa");
           this.cancelar();
@@ -86,16 +104,68 @@ export class ReservarComponent implements OnInit {
     this.ruta.navigate(['/mis-rentas/'+this.correo]);
   }
 
+  llenar(a: any)
+  {
+    this.cuenta=a;
+    console.log(this.cuenta);
+  }
+
   //funcion de cancelar reserva
   cancelar() {
     this.ruta.navigate(['/cliente-catalogo/' + this.correo]);
   }
 
+  //funcion para los costos
   costoRes(value:any){
     this.entrada = new Date(this.formularioReserva.value.entrada);
     this.salida = new Date(this.formularioReserva.value.salida);
     this.dif = (this.salida.getTime() - this.entrada.getTime());
     this.dias = Math.ceil(this.dif / (1000 * 3600 * 24));
     this.costo = this.dias * value;
+  }
+
+  //Obtención de datos comentarios 
+  obtenerdator()
+  {
+    this._ReservService.Cacomentarios(this.id).subscribe((data:any)=>{
+      console.log(data);
+      this.coment=data[0]["Comentario"];
+      this.idcasa=data[0]["IdCasa"];
+      this.obtenerdatoscasa(this.idcasa);
+    })
+  }
+
+  obtenerComentarios(){
+    this._ReservService.Cacomentarios(this.id).subscribe((data:any) => {
+      this.comentarios=[];
+      data.forEach((element:any) => {
+        this.comentarios.push({
+          
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        })
+      });
+      console.log(this.comentarios);
+     
+      this.idcasa=this.comentarios[0]["IdCasa"];
+      this.obtenerdatoscasa(this.idcasa);
+    });
+  }
+  obtenerdatoscasa(id: string)
+  {
+    this._ReservService.CaDatos(id).subscribe((data:any)=>{
+      console.log(data);
+      this.im=data["img"];
+      this.im2=data["img2"];
+      this.ubi=data["Ubicacion"];
+      this.esta=data["Estado"];
+      this.muni=data["Municipio"];
+      this.estrellas=data["Estrellas"];
+      this.cost=data["Costo"];
+      this.descripcion=data["Descripcion"];
+      this.cuart=data["Cuartos"];
+      this.due=data["Dueño"];
+      console.log(this.muni);
+    })
   }
 }
