@@ -24,7 +24,7 @@ export class ClienteCatalogoComponent implements OnInit {
 
   ngOnInit(): void {
       this.casasPropietario();
-      this.getCasas()
+      this.getCasas();
       this.getveri();
   }
   getCasas(){

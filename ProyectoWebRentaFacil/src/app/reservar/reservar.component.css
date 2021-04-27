@@ -1,9 +1,39 @@
 #Co
 {
-    margin-left: 28%;
-    position: fixed;
+    position:relative;
+    margin-left:6%;
 }
-
+.c {
+    display: block;
+    position: relative;	
+    width: 400px;
+  }
+.estrellas{
+    width:150px;
+    height:35px;
+    float:left;
+}
+div p{
+    background-color:black;
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    padding: 5px;
+    width: 100%;
+    color:white;
+  }
+#datos{
+    float:left;
+    width: 650px;
+    height:500px;
+    margin-left:15px;
+}
+#form{
+    float:left;
+    margin-left:100px;
+    width: 300px;
+}
 #l
 {
     margin-right: 2%;

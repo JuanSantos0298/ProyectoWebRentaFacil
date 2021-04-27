@@ -94,5 +94,16 @@ export class ServicioService {
     {
       return this.firestore.collection("Usuarios").doc(id).update(data);
     }
+    //cargar comentarios servicio
+    Cacomentarios(id:string): Observable<any> 
+    {
+      return this.firestore.collection("casaComentarios",ref =>ref.where("IdCasa","==",id)).snapshotChanges();
+    }
+
+    ///cargar datos de casa
+    CaDatos(id:string): Observable<any> 
+    {
+        return this.firestore.collection("casas").doc(id).valueChanges();
+    }
 
 }

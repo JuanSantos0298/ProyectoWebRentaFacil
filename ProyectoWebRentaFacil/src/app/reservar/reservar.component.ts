@@ -23,7 +23,21 @@ export class ReservarComponent implements OnInit {
   cvv = "";
   cuenta = "";
   formularioReserva: FormGroup;
-
+  //Variables para datos casos
+  numc:any;
+  coment: any;
+  idcasa:any;
+  im:any;
+  im2:any;
+  ubi: any;
+  cost:any;
+  estrellas:any;
+  esta: any;
+  muni: any;
+  descripcion:any;
+  cuart:any;
+  due:any;
+  comentarios: any[]=[];
   constructor(private ruta: Router, private toastr: ToastrService, private aRout: ActivatedRoute, 
     private _ReservService: ServicioService, private fb: FormBuilder) {
       this.correo = this.aRout.snapshot.paramMap.get('correo');
@@ -39,6 +53,8 @@ export class ReservarComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.obtenerdator();
+    this.obtenerComentarios();
   }
 
   //funcion principal para reservar
@@ -90,4 +106,48 @@ export class ReservarComponent implements OnInit {
     this.ruta.navigate(['/cliente-catalogo/' + this.correo]);
   }
 
+  //Obtención de datos comentarios 
+  obtenerdator()
+  {
+    this._ReservService.Cacomentarios(this.id).subscribe((data:any)=>{
+      console.log(data);
+      this.coment=data[0]["Comentario"];
+      this.idcasa=data[0]["IdCasa"];
+      this.obtenerdatoscasa(this.idcasa);
+    })
+  }
+
+  obtenerComentarios(){
+    this._ReservService.Cacomentarios(this.id).subscribe((data:any) => {
+      this.comentarios=[];
+      data.forEach((element:any) => {
+        this.comentarios.push({
+          
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        })
+      });
+      console.log(this.comentarios);
+     
+      this.idcasa=this.comentarios[0]["IdCasa"];
+      this.obtenerdatoscasa(this.idcasa);
+    });
+  }
+  obtenerdatoscasa(id: string)
+  {
+    this._ReservService.CaDatos(id).subscribe((data:any)=>{
+      console.log(data);
+      this.im=data["img"];
+      this.im2=data["img2"];
+      this.ubi=data["Ubicacion"];
+      this.esta=data["Estado"];
+      this.muni=data["Municipio"];
+      this.estrellas=data["Estrellas"];
+      this.cost=data["Costo"];
+      this.descripcion=data["Descripcion"];
+      this.cuart=data["Cuartos"];
+      this.due=data["Dueño"];
+      console.log(this.muni);
+    })
+  }
 }

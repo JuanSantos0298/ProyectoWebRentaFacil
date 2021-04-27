@@ -1,10 +1,47 @@
 <br><br>
 
-<div id="Co" class="container mt-5">
-    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 35rem;">
+<div id="Co" class="container mt-5 card border-dark">
+    <div class=" mb-5 text-center" style="width: 80rem; height: 37rem;"><br>
         <h3>Crear reservación</h3>
-        <div class="card-body">
-            <form [formGroup]="formularioReserva" action="">
+        <div>
+            <br>
+            <div id="datos" class="card border-gray" >
+                <div>
+                    <div style="text-align: center; border-radius: 5px; "><br>
+                        <strong style="font-size:18px;">{{muni}}, {{esta}}</strong>
+                    </div><br>
+                    <div class="text-center" *ngIf="estrellas==5">
+                        <img class="estrellas" src="./assets/Estrellas5.jpeg">
+                      </div>
+                      <div class="text-center" *ngIf="estrellas==4">
+                        <img class="estrellas" src="./assets/Estrellas4.jpeg">
+                      </div>
+                      <div class="text-center" *ngIf="estrellas==3">
+                        <img class="estrellas" src="./assets/Estrellas3.jpeg">
+                      </div>
+                      <div class="text-center" *ngIf="estrellas==2">
+                        <img class="estrellas" src="./assets/Estrellas2.jpeg">
+                      </div>
+                      <div class="text-center" *ngIf="estrellas==1">
+                        <img class="estrellas" src="./assets/Estrellas1.jpeg">
+                      </div>
+                      <div style="margin-top:4px; float:right; margin-right:21px; color:gray;">3 evaluaciones</div>
+                    </div>
+                <div style="border-radius:8px;">
+                <div>
+                    <img style="float:left; width:300px; margin-left:18px;" src="{{im}}">
+                    <img style="float:left; width:300px; height:188px; margin-left:5px;" src="{{im2}}">
+                </div> 
+                </div><br>
+                <div style="display: block; text-align:left; margin-left:25px;">
+                    <div><strong>Ubicación:</strong> {{ubi}}</div>
+                    <div><strong>Descripción:</strong> {{descripcion}}</div>
+                    <div><strong>Cuartos: </strong> {{cuart}}</div>
+                    <div><strong>Costo: </strong>${{cost}}</div>
+                    <div style="color: gray; float:right; margin-right:10px;"><strong style="color: gray;">Propietario: </strong>{{due}}</div>
+                </div>
+                </div>
+            <form id="form"  [formGroup]="formularioReserva" action="">
                 <div class="row"></div>
                 <div class="form-group">
                     <label for="">Numero de tarjeta o cuenta bancaria</label>
@@ -71,4 +108,20 @@
             </form>
         </div>
     </div>
+    <div class="card border-gray">
+        <div> <br>
+            <div style="margin-left:18px;">
+            <div style="background-color:#C1EFFC; padding:5px; text-align: left; margin-left:4px; margin-right: 19px; border-radius:5px;">
+              <h6>Comentarios</h6>
+            </div><br>
+            <div *ngFor="let come of comentarios" style="float:left; margin-left:35px;">
+              <img src="./assets/icoUsuario.png" alt="icono usuario" style="width:50px; float:left; margin-right:15px;">
+              <div style="width: 520px; border-radius: 7px; margin-left:25px;" class="card border-gray"> 
+              <i style="margin:7px;">{{come.Comentario}}</i>
+              <i style="color: grey; text-align:right; margin:7px;">-{{come.usuario}}</i>
+            </div><br>
+          </div>
+          </div>
+        </div>
+  </div><br><br>  
 </div>
