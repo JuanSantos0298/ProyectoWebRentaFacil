@@ -10,7 +10,7 @@
 
 #co
 {
-    margin-top: 11%;
+    margin-top: 10%;
     margin-left: 35%;
     position: fixed;
 }
@@ -18,4 +18,24 @@
 #re
 {
    margin-top: 3%;
+}
+
+#campo
+{
+    width: 70%;
+    margin-left: 15%;
+}
+
+#fo
+{
+    margin-top: 39.5%;
+    height: 150px;
+    width: 100%;
+    position: fixed;
+}
+
+#b
+{
+    text-decoration: none;
+    color: white;
 }

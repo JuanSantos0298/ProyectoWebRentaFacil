@@ -178,3 +178,40 @@ i{
 {
     margin-bottom: 9px;
 }
+
+#ubicacion
+{
+    margin-left: 8%;
+    background-color: transparent;
+}
+
+#ub
+{
+    border-color: transparent;
+    background-color: transparent;
+    color: white;
+}
+
+#fo
+{
+    margin-top: 70%;
+    height: 130px;
+}
+
+#fo1
+{
+    margin-top: 100%;
+    height: 130px;
+}
+
+#fo2
+{
+    margin-top: 40%;
+    height: 130px;
+}
+
+#b
+{
+    text-decoration: none;
+    color: white;
+}

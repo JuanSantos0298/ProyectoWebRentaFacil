@@ -1,14 +1,13 @@
-<!-- <p>agregar-usuarios works!</p> -->
 <br>
 <div id="Co" class="container mt-5">
-    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 51rem;">
+    <div class="card border-dark mb-5 text-center" style="width: 30rem; height: 51rem;">
         <div class="card-body">
             <h3>Registro</h3>
             <form [formGroup]="formularioUsuario" action="">
                 <div class="row"></div>
                         <div class="form-group">
                             <label id="no" for="">Nombre</label>
-                            <input type="text" class="form-control border-dark" formControlName="Nombre" placeholder="Introduzca su nombre. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="Nombre" placeholder="Introduzca su nombre. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Nombre'].invalid && formularioUsuario.controls['Nombre'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Nombre'].errors.required" >Se requiere el nombre. </span>
@@ -17,7 +16,7 @@
                         <br>
                         <div class="form-group">
                             <label for="">Apellido</label>
-                            <input type="text" class="form-control border-dark" formControlName="Apellido" placeholder="Introduzca su apellido. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="Apellido" placeholder="Introduzca su apellido. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Apellido'].invalid && formularioUsuario.controls['Apellido'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Apellido'].errors.required" >Se requiere el apellido</span>
@@ -26,12 +25,12 @@
                         <br>
                         <div class="form-group">
                             <label for="">Telefono</label>
-                            <input type="text" class="form-control border-dark" formControlName="Telefono" placeholder="Introduzca su apellido. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="Telefono" placeholder="Introduzca su apellido. ">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="">Numero de tarjeta o cuenta bancaria</label>
-                            <input type="text" class="form-control border-dark" formControlName="Cuentabancaria" placeholder="Introduzca su numero de cuenta o tarjeta. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="Cuentabancaria" placeholder="Introduzca su numero de cuenta o tarjeta. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Cuentabancaria'].invalid && formularioUsuario.controls['Cuentabancaria'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Cuentabancaria'].errors.required" >Se requiere su Clave Interbancaria. </span>
@@ -40,7 +39,7 @@
                         <br>
                         <div class="form-group">
                             <label for="">CVC</label>
-                            <input type="text" class="form-control border-dark" formControlName="CVC" placeholder="Introduzca el CVC. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="CVC" placeholder="Introduzca el CVC. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['CVC'].invalid && formularioUsuario.controls['CVC'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['CVC'].errors.required" >Se requiere su CVC. </span>
@@ -49,7 +48,7 @@
                         <br>
                         <div class="form-group">
                             <label for="">Correo</label>
-                            <input type="email" class="form-control border-dark" formControlName="Correo" placeholder="Introduzca su correo. ">
+                            <input type="email" id="campo" class="form-control border-dark" formControlName="Correo" placeholder="Introduzca su correo. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Correo'].invalid && formularioUsuario.controls['Correo'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Correo'].errors.required" >Se requiere su correo electronico. </span>
@@ -59,7 +58,7 @@
                         <br>
                         <div class="form-group">
                             <label for="">Contraseña</label>
-                            <input type="password" class="form-control border-dark" formControlName="Contraseña" placeholder="Introduzca su contraseña. ">
+                            <input type="password" id="campo" class="form-control border-dark" formControlName="Contraseña" placeholder="Introduzca su contraseña. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Contraseña'].invalid && formularioUsuario.controls['Contraseña'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Contraseña'].errors.required" >Se requiere el uso de una contraseña. </span>
@@ -68,14 +67,13 @@
                         <br>
                         <div class="form-group">
                             <label for="">Ocupación</label>
-                            <input type="text" class="form-control border-dark" formControlName="Ocupación" placeholder="Introduzca su ocupación cliente o propietario. ">
+                            <input type="text" id="campo" class="form-control border-dark" formControlName="Ocupación" placeholder="Introduzca su ocupación cliente o propietario. ">
                             <!--Validaciones de los campos-->
                             <div *ngIf = "formularioUsuario.controls['Ocupación'].invalid && formularioUsuario.controls['Ocupación'].dirty" role="alert" class="alert alert-danger">
                                 <span *ngIf = "formularioUsuario.controls['Ocupación'].errors.required" >Se requiere que escriba cliente o propietario </span>
                             </div>                                        
                         </div>
                         
-
                         <br> 
                         <button id="l" type="text" class="btn btn-secondary" routerLink="">Cancelar</button>
                         <button class="btn btn-primary" [disabled] = "formularioUsuario.invalid" (click) = "agregar()" routerLink="/iniciar-sesion">Registrarse</button>
@@ -83,4 +81,30 @@
         </div>
     </div>
 </div>
+
+<footer id="fo" class="bg-dark text-white">
+    <div class="container">
+        <div class="row row-cols-3">
+          <div class="col">
+              Contacta con nosotros.
+              <br> <br>
+              Celular: 5637091836.
+              <br><br>
+              Correo: roof&home@gmail.com
+          </div>
+          <div class="col">
+              Siguenos.
+              <br><br>
+              <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+          </div>
+          <div class="col text-justify">
+              <br> Copyright 2016-2021 roof&home.com <br>
+              <br>
+              Todos los derechos reservados.
+            </div>
+        </div>
+      </div>
+</footer>
 

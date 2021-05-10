@@ -1,23 +1,83 @@
-<div id="ta" class="content" style="padding: 24px;">
-    <h3 class="text-center">Lista de usuarios</h3>
-    <div class="border-dark"fxLayout="row wrap" fxLayoutGap="24px grid">
-        <table class="table table-hover border-dark">
-            <thead class="border-dark">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active" *ngFor="let us of datos | async">
-                    <td>{{us.Nombre}} {{us.Apellido}}</td>
-                    <td>{{us.Correo}}</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-primary" (click)="borrarUsuario(us.id)">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<br><br>
+<div class="menu">
+  <br>
+  <div class="dropdown">
+    <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;"
+      routerLink=""> Cerrar sesión</button>
+    <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <i class="fas fa-user-circle fa-lg" id="icono" *ngIf="im == ''"></i>
+      <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''">
+      Mi perfil
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it>Catalogo de
+          casas</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar mi
+          perfil</a></li>
+      <br>
+      <li><a class="dropdown-item fas fa-user-times fa-lg text-light" href="/borrar-usuario/{{correo}}" id=it> Eliminar
+          un usuario</a></li>
+      <br>
+      <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+    </ul>
+    <span id="ubicacion" class="text-light">
+      <!--Navegacion del usuario-->
+      <button routerLink="" id="ub">Inicio</button>>
+      <button routerLink="/iniciar-sesion" id="ub">Iniciar sesion</button>>
+      <button routerLink="/cliente-catalogo/{{correo}}" id="ub">Catalogo de casas</button>>
+      <button routerLink="/borrar-usuario/{{correo}}" id="ub" style="color: cyan">Eliminar a un usuario</button>
+    </span>
+  </div>
 </div>
+
+<div id="ta" class="content" style="padding: 24px;">
+  <h3 class="text-center">Lista de usuarios</h3>
+  <div class="border-dark" fxLayout="row wrap" fxLayoutGap="24px grid">
+    <table class="table table-hover border-dark">
+      <thead class="border-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active" *ngFor="let us of datos | async">
+          <td>{{us.Nombre}} {{us.Apellido}}</td>
+          <td>{{us.Correo}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary" (click)="borrarUsuario(us.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer id="fo" class="bg-dark text-white">
+  <div class="container">
+      <div class="row row-cols-3">
+        <div class="col">
+            Contacta con nosotros.
+            <br> <br>
+            Celular: 5637091836.
+            <br><br>
+            Correo: roof&home@gmail.com
+        </div>
+        <div class="col">
+            Siguenos.
+            <br><br>
+            <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+            <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+            <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+        </div>
+        <div class="col text-justify">
+            <br> Copyright 2016-2021 roof&home.com <br>
+            <br>
+            Todos los derechos reservados.
+          </div>
+      </div>
+    </div>
+</footer>

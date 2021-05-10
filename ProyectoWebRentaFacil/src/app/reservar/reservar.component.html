@@ -1,52 +1,84 @@
 <br><br>
+<div class="menu">
+    <br>
+    <div class="dropdown">
+        <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;"
+            routerLink=""> Cerrar sesión</button>
+        <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle" id="icono" *ngIf="ima == ''"></i>
+            <img class="rounded-circle text-light" src="{{ima}}" id="imagenperfil" *ngIf="ima != ''">
+            Mi perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it>
+                    Catalogo de casas</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar
+                    mi perfil</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-calendar-day fa-lg text-light" href="/mis-rentas/{{correo}}" id=it> Mis
+                    reservaciones</a></li>
+            <br>
+            <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+        </ul>
+        <span id="ubicacion" class="text-light">
+            <button routerLink="" id="ub">Inicio</button>>
+            <button routerLink="/iniciar-sesion" id="ub">Iniciar sesion</button>>
+            <button routerLink="/cliente-catalogo/{{correo}}" id="ub">Catalogo de casas</button>>
+            <button routerLink="/reservar/{{correo}}/{{id}}" id="ub" style="color: cyan">Rentar propiedad</button>
+        </span>
+    </div>
+</div>
 
 <div id="Co" class="container mt-5 card border-dark">
     <div class=" mb-5 text-center" style="width: 80rem; height: 37rem;"><br>
         <h3>Crear reservación</h3>
         <div>
             <br>
-            <div id="datos" class="card border-gray" >
+            <div id="datos" class="card border-gray">
                 <div>
                     <div style="text-align: center; border-radius: 5px; "><br>
                         <strong style="font-size:18px;">{{muni}}, {{esta}}</strong>
                     </div><br>
                     <div class="text-center" *ngIf="estrellas==5">
                         <img class="estrellas" src="./assets/Estrellas5.jpeg">
-                      </div>
-                      <div class="text-center" *ngIf="estrellas==4">
-                        <img class="estrellas" src="./assets/Estrellas4.jpeg">
-                      </div>
-                      <div class="text-center" *ngIf="estrellas==3">
-                        <img class="estrellas" src="./assets/Estrellas3.jpeg">
-                      </div>
-                      <div class="text-center" *ngIf="estrellas==2">
-                        <img class="estrellas" src="./assets/Estrellas2.jpeg">
-                      </div>
-                      <div class="text-center" *ngIf="estrellas==1">
-                        <img class="estrellas" src="./assets/Estrellas1.jpeg">
-                      </div>
-                      <div style="margin-top:4px; float:right; margin-right:21px; color:gray;">3 evaluaciones</div>
                     </div>
+                    <div class="text-center" *ngIf="estrellas==4">
+                        <img class="estrellas" src="./assets/Estrellas4.jpeg">
+                    </div>
+                    <div class="text-center" *ngIf="estrellas==3">
+                        <img class="estrellas" src="./assets/Estrellas3.jpeg">
+                    </div>
+                    <div class="text-center" *ngIf="estrellas==2">
+                        <img class="estrellas" src="./assets/Estrellas2.jpeg">
+                    </div>
+                    <div class="text-center" *ngIf="estrellas==1">
+                        <img class="estrellas" src="./assets/Estrellas1.jpeg">
+                    </div>
+                    <div style="margin-top:4px; float:right; margin-right:21px; color:gray;">3 evaluaciones</div>
+                </div>
                 <div style="border-radius:8px;">
-                <div>
-                    <img style="float:left; width:300px; margin-left:18px;" src="{{im}}">
-                    <img style="float:left; width:300px; height:188px; margin-left:5px;" src="{{im2}}">
-                </div> 
+                    <div>
+                        <img style="float:left; width:300px; margin-left:18px;" src="{{im}}">
+                        <img style="float:left; width:300px; height:188px; margin-left:5px;" src="{{im2}}">
+                    </div>
                 </div><br>
                 <div style="display: block; text-align:left; margin-left:25px;">
                     <div><strong>Ubicación:</strong> {{ubi}}</div>
                     <div><strong>Descripción:</strong> {{descripcion}}</div>
                     <div><strong>Cuartos: </strong> {{cuart}}</div>
                     <div><strong>Costo: </strong>${{cost}}</div>
-                    <div style="color: gray; float:right; margin-right:10px;"><strong style="color: gray;">Propietario: </strong>{{due}}</div>
+                    <div style="color: gray; float:right; margin-right:10px;"><strong style="color: gray;">Propietario:
+                        </strong>{{due}}</div>
                 </div>
-                </div>
-            <form id="form"  [formGroup]="formularioReserva" action="">
+            </div>
+            <form id="form" [formGroup]="formularioReserva" action="">
                 <div class="row"></div>
                 <div class="form-group">
                     <label for="">Numero de tarjeta o cuenta bancaria</label>
-                    <input type="number" class="form-control border-dark" formControlName="Cuentabancaria"
-                        placeholder="Introduzca su numero de cuenta o tarjeta. ">
+                    <input type="number" class="form-control border-dark border-2" formControlName="Cuentabancaria"
+                        placeholder="Introduzca su numero de cuenta.">
                     <!--Validaciones de los campos-->
                     <div *ngIf="formularioReserva.controls['Cuentabancaria'].invalid && formularioReserva.controls['Cuentabancaria'].dirty"
                         role="alert" class="alert alert-danger">
@@ -57,7 +89,7 @@
                 <br>
                 <div class="form-group">
                     <label for="">CVC</label>
-                    <input type="number" class="form-control border-dark" formControlName="CVC"
+                    <input type="number" class="form-control border-dark border-2" formControlName="CVC"
                         placeholder="Introduzca el CVC. ">
                     <!--Validaciones de los campos-->
                     <div *ngIf="formularioReserva.controls['CVC'].invalid && formularioReserva.controls['CVC'].dirty"
@@ -68,7 +100,7 @@
                 <br>
                 <div class="form-group">
                     <label for="">Correo</label>
-                    <input type="email" class="form-control border-dark" formControlName="Correo"
+                    <input type="email" class="form-control border-dark border-2" formControlName="Correo"
                         placeholder="Introduzca su correo. ">
                     <!--Validaciones de los campos-->
                     <div *ngIf="formularioReserva.controls['Correo'].invalid && formularioReserva.controls['Correo'].dirty"
@@ -82,46 +114,77 @@
                 <br>
                 <div class="form-group">
                     <label for="">Fecha de entrada</label>
-                    <input type="date" class="form-control border-dark" formControlName="entrada"
+                    <input type="date" class="form-control border-dark border-2" formControlName="entrada"
                         placeholder="dd/mm/aaaa">
                     <!--Validaciones de los campos-->
                     <div *ngIf="formularioReserva.controls['entrada'].invalid && formularioReserva.controls['entrada'].dirty"
                         role="alert" class="alert alert-danger">
-                        <span *ngIf="formularioReserva.controls['entrada'].errors.required">Se requiere la fecha de entrada. </span>
+                        <span *ngIf="formularioReserva.controls['entrada'].errors.required">Se requiere la fecha de
+                            entrada. </span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="">Fecha de salida</label>
-                    <input type="date" class="form-control border-dark" formControlName="salida"
+                    <input type="date" class="form-control border-dark border-2" formControlName="salida"
                         placeholder="dd/mm/aaaa">
                     <!--Validaciones de los campos-->
                     <div *ngIf="formularioReserva.controls['salida'].invalid && formularioReserva.controls['salida'].dirty"
                         role="alert" class="alert alert-danger">
-                        <span *ngIf="formularioReserva.controls['salida'].errors.required">Se requiere la fecha de salida.</span>
+                        <span *ngIf="formularioReserva.controls['salida'].errors.required">Se requiere la fecha de
+                            salida.</span>
                     </div>
                 </div>
                 <br>
                 <br>
                 <button id="l" type="text" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-                <button class="btn btn-primary"  [disabled] = "formularioReserva.invalid" (click)="reservar()">Reservar</button>
+                <button class="btn btn-primary" [disabled]="formularioReserva.invalid"
+                    (click)="reservar()">Reservar</button>
             </form>
         </div>
     </div>
     <div class="card border-gray">
         <div> <br>
             <div style="margin-left:18px;">
-            <div style="background-color:#C1EFFC; padding:5px; text-align: left; margin-left:4px; margin-right: 19px; border-radius:5px;">
-              <h6>Comentarios</h6>
-            </div><br>
-            <div *ngFor="let come of comentarios" style="float:left; margin-left:35px;">
-              <img src="./assets/icoUsuario.png" alt="icono usuario" style="width:50px; float:left; margin-right:15px;">
-              <div style="width: 520px; border-radius: 7px; margin-left:25px;" class="card border-gray"> 
-              <i style="margin:7px;">{{come.Comentario}}</i>
-              <i style="color: grey; text-align:right; margin:7px;">-{{come.usuario}}</i>
-            </div><br>
-          </div>
-          </div>
+                <div
+                    style="background-color:#C1EFFC; padding:5px; text-align: left; margin-left:4px; margin-right: 19px; border-radius:5px;">
+                    <h6>Comentarios</h6>
+                </div><br>
+                <div *ngFor="let come of comentarios" style="float:left; margin-left:35px;">
+                    <img src="./assets/icoUsuario.png" alt="icono usuario"
+                        style="width:50px; float:left; margin-right:15px;">
+                    <div style="width: 520px; border-radius: 7px; margin-left:25px;" class="card border-gray">
+                        <i style="margin:7px;">{{come.Comentario}}</i>
+                        <i style="color: grey; text-align:right; margin:7px;">-{{come.usuario}}</i>
+                    </div><br>
+                </div>
+            </div>
         </div>
-  </div><br><br>  
+    </div><br><br>
 </div>
+
+<footer id="fo" class="bg-dark text-white">
+    <div class="container">
+        <div class="row row-cols-3">
+          <div class="col">
+              Contacta con nosotros.
+              <br> <br>
+              Celular: 5637091836.
+              <br><br>
+              Correo: roof&home@gmail.com
+          </div>
+          <div class="col">
+              Siguenos.
+              <br><br>
+              <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+          </div>
+          <div class="col text-justify">
+              <br> Copyright 2016-2021 roof&home.com <br>
+              <br>
+              Todos los derechos reservados.
+            </div>
+        </div>
+      </div>
+</footer>

@@ -41,13 +41,14 @@ import { MisGananciasComponent } from './mis-ganancias/mis-ganancias.component';
     ReservarComponent,
     MisRentasComponent,
     EditarPerfilComponent,
-    MisGananciasComponent
+    MisGananciasComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     FormsModule,
+    
     //Importamos FireStorage para subir las imagenes
     AngularFireStorageModule,
     ReactiveFormsModule,

@@ -1,86 +1,175 @@
+<br><br>
+<div class="menu">
+    <br>
+    <div class="dropdown">
+        <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;"
+            routerLink=""> Cerrar sesión</button>
+        <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle" id="icono" *ngIf="im == ''"></i>
+            <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''">
+            Mi perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it> Mis
+                    propiedades</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-plus-circle fa-lg text-light" href="/agregar-casa/{{correo}}" id=it>
+                    Agregar
+                    propiedad</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar
+                    mi perfil</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-file-invoice-dollar fa-lg text-light" href="/misGanancias/{{correo}}"
+                    id=it> Mis ganancias</a></li>
+            <br>
+            <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+        </ul>
+        <span id="ubicacion" class="text-light">
+            <button routerLink="" id="ub">Inicio</button>>
+            <button routerLink="/iniciar-sesion" id="ub">Iniciar sesion</button>>
+            <button routerLink="/cliente-catalogo/{{correo}}" id="ub">Mis propiedades</button>>
+            <button routerLink="/agregar-casa/{{correo}}" id="ub" style="color: cyan">Agregar propiedad</button>
+        </span>
+    </div>
+</div>
+
 <div id="Co" class="container mt-5">
-    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 50rem;">
+    <div class="card border-dark mb-5 text-center" style="width: 40rem; height: 52rem;">
         <div class="card-body">
             <h3>Agregar propiedad</h3>
             <form [formGroup]="formularioPropiedad" action="">
                 <!--Direccion-->
                 <div class="form-group">
                     <label for="">Direccion</label>
-                    <input type="text" class="form-control border-dark" formControlName="Ubicacion" placeholder="Escriba la direccion. ">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Ubicacion'].invalid && formularioPropiedad.controls['Ubicacion'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Ubicacion'].errors.required" >Se requiere la direccion de la propiedad.</span>
-                </div>               
+                    <input type="text" class="form-control border-dark border-2" formControlName="Ubicacion"
+                        placeholder="Escriba la direccion. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Ubicacion'].invalid && formularioPropiedad.controls['Ubicacion'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Ubicacion'].errors.required">Se requiere la direccion
+                            de la propiedad.</span>
+                    </div>
                 </div>
                 <!--Municipio--> <br>
                 <div class="form-group">
                     <label for="">Municipio</label>
-                    <input type="text" class="form-control border-dark" formControlName="Municipio" placeholder="Escriba el municipio donde se ubica la propiedad.">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Municipio'].invalid && formularioPropiedad.controls['Municipio'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Municipio'].errors.required" >Se requiere el municipio donde se ubica la propiedad.</span>
-                </div>              
+                    <input type="text" class="form-control border-dark border-2" formControlName="Municipio"
+                        placeholder="Escriba el municipio donde se ubica la propiedad.">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Municipio'].invalid && formularioPropiedad.controls['Municipio'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Municipio'].errors.required">Se requiere el municipio
+                            donde se ubica la propiedad.</span>
+                    </div>
                 </div>
                 <!--Estado--> <br>
                 <div class="form-group">
                     <label for="">Estado</label>
-                    <input type="text" class="form-control border-dark" formControlName="Estado" placeholder="Escriba el estado donde se ubica la propiedad.">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Estado'].invalid && formularioPropiedad.controls['Estado'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Estado'].errors.required" >Se requiere el estado donde se ubica la propiedad.</span>
-                </div>              
+                    <input type="text" class="form-control border-dark border-2" formControlName="Estado"
+                        placeholder="Escriba el estado donde se ubica la propiedad.">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Estado'].invalid && formularioPropiedad.controls['Estado'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Estado'].errors.required">Se requiere el estado donde
+                            se ubica la propiedad.</span>
+                    </div>
                 </div>
                 <!--Descripcion--> <br>
                 <div class="form-group">
                     <label for="">Descripcion</label>
-                    <input type="text" class="form-control border-dark" formControlName="Descripcion" placeholder="Escriba una breve descripcion de la propiedad. ">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Descripcion'].invalid && formularioPropiedad.controls['Descripcion'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Descripcion'].errors.required" >Se requiere una breve descripcion de la propiedad.</span>
-                </div>              
-                </div>        
+                    <input type="text" class="form-control border-dark border-2" formControlName="Descripcion"
+                        placeholder="Escriba una breve descripcion de la propiedad. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Descripcion'].invalid && formularioPropiedad.controls['Descripcion'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Descripcion'].errors.required">Se requiere una breve
+                            descripcion de la propiedad.</span>
+                    </div>
+                </div>
                 <!--Numero de habitaciones-->
                 <div class="form-group"> <br>
                     <label for="">Numero de habitaciones</label>
-                    <input type="number" class="form-control border-dark" formControlName="Cuartos" placeholder="Escriba el numero de habitaciones que posee la propiedad. ">
-                            <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Cuartos'].invalid && formularioPropiedad.controls['Cuartos'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Cuartos'].errors.required" >Se requiere establecer el numero de habitaciones de la propiedad.</span>
-                </div>  
+                    <input type="number" class="form-control border-dark border-2" formControlName="Cuartos"
+                        placeholder="Escriba el numero de habitaciones que posee la propiedad. ">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Cuartos'].invalid && formularioPropiedad.controls['Cuartos'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Cuartos'].errors.required">Se requiere establecer el
+                            numero de habitaciones de la propiedad.</span>
+                    </div>
                 </div>
                 <!--Costo--> <br>
                 <div class="form-group">
                     <label for="">Costo</label>
-                    <input type="number" class="form-control border-dark" formControlName="Costo" placeholder="Escriba costo por renta de la propiedad.">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Costo'].invalid && formularioPropiedad.controls['Costo'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Costo'].errors.required" >Se requiere establecer el costo de renta de la propiedad.</span>
-                </div>              
+                    <input type="number" class="form-control border-dark border-2" formControlName="Costo"
+                        placeholder="Escriba costo por renta de la propiedad.">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Costo'].invalid && formularioPropiedad.controls['Costo'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Costo'].errors.required">Se requiere establecer el
+                            costo de renta de la propiedad.</span>
+                    </div>
                 </div>
                 <!--Calificacion--> <br>
                 <div class="form-group">
                     <label for="">Calificacion</label>
-                    <input type="number" class="form-control border-dark" formControlName="Estrellas" placeholder="Inserte la calificacion de la propiedad segun el numero de estrellas que posea.">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['Estrellas'].invalid && formularioPropiedad.controls['Estrellas'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['Estrellas'].errors.required" >Se requiere establecer la calificacion de la propiedad.</span>
-                </div>              
+                    <input type="number" class="form-control border-dark border-2" formControlName="Estrellas"
+                        placeholder="Inserte la calificacion de la propiedad segun el numero de estrellas que posea.">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['Estrellas'].invalid && formularioPropiedad.controls['Estrellas'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['Estrellas'].errors.required">Se requiere establecer
+                            la calificacion de la propiedad.</span>
+                    </div>
                 </div>
                 <!--Imagen--> <br>
                 <div class="form-group">
                     <label for="">Imagen promocional </label>
                     <br>
-                    <input type="file" (change) = "subirImagen($event)" class="form-control-file border-dark" formControlName="img" placeholder="Inserte una imagen promocional de la propiedad. ">
-                <!--Validaciones de los campos-->
-                <div *ngIf = "formularioPropiedad.controls['img'].invalid && formularioPropiedad.controls['img'].dirty" role="alert" class="alert alert-danger">
-                    <span *ngIf = "formularioPropiedad.controls['img'].errors.required" >Se requiere establecer una imagen promocional de la propiedad.</span>
-                </div>              
-                </div>     
+                    <input type="file" (change)="subirImagen($event)" class="form-control border-dark border-2"
+                        formControlName="img">
+                    <!--Validaciones de los campos-->
+                    <div *ngIf="formularioPropiedad.controls['img'].invalid && formularioPropiedad.controls['img'].dirty"
+                        role="alert" class="alert alert-danger">
+                        <span *ngIf="formularioPropiedad.controls['img'].errors.required">Se requiere establecer una
+                            imagen promocional de la propiedad.</span>
+                    </div>
+                </div>
                 <br>
-                        <button id="l" type="text" class="btn btn-secondary" routerLink="/cliente-catalogo/{{correo}}">Cancelar</button>
-                        <button class="btn btn-primary" [disabled] = "formularioPropiedad.invalid"(click) = "AgregarPropiedad()">Agregar</button>
+                <button id="l" type="text" class="btn btn-secondary"
+                    routerLink="/cliente-catalogo/{{correo}}">Cancelar</button>
+                <button class="btn btn-primary" [disabled]="formularioPropiedad.invalid"
+                    (click)="AgregarPropiedad()">Agregar</button>
             </form>
         </div>
     </div>
 </div>
 
+<footer id="fo" class="bg-dark text-white">
+    <div class="container">
+        <div class="row row-cols-3">
+            <div class="col">
+                Contacta con nosotros.
+                <br> <br>
+                Celular: 5637091836.
+                <br><br>
+                Correo: roof&home@gmail.com
+
+            </div>
+            <div class="col">
+                Siguenos.
+                <br><br>
+                <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+                <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+                <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+            </div>
+            <div class="col text-justify">
+                <br> Copyright 2016-2021 roof&home.com <br>
+                <br>
+                Todos los derechos reservados.
+            </div>
+        </div>
+    </div>
+</footer>

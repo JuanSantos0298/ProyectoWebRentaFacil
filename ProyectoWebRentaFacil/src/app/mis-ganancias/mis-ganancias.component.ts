@@ -11,26 +11,31 @@ import { ServicioService } from '../Servicios/servicio.service';
 })
 export class MisGananciasComponent implements OnInit {
 
-  correo='';
-  rentas: any[]=[];
+  correo = '';
+  rentas: any[] = [];
   mapRentas = new Map();
   arrayObjetos: any;
-  total:Observable<number>;
+  total: Observable<number>;
 
-  constructor(private aRout: ActivatedRoute,private _ganancias:ServicioService,private toas: ToastrService) {
+  //perfil y navbar
+  ocu: any;
+  im: any;
+  dato: any;
+
+  constructor(private aRout: ActivatedRoute, private _ganancias: ServicioService, private toas: ToastrService) {
     this.correo = this.aRout.snapshot.paramMap.get('correo');
-   }
+  }
 
   ngOnInit(): void {
     this.tabla();
+    this.getveri();
   }
 
   //funcion para obtener los datos de las casas reservadas
-  tabla()
-  {
-    this._ganancias.visualizarGanancias(this.correo).subscribe((data: any)=>{
-      this.rentas=[];
-      data.forEach((elemnt:any)=>{
+  tabla() {
+    this._ganancias.visualizarGanancias(this.correo).subscribe((data: any) => {
+      this.rentas = [];
+      data.forEach((elemnt: any) => {
         this.rentas.push({
           iden: elemnt.payload.doc.id,
           ...elemnt.payload.doc.data(),
@@ -42,16 +47,20 @@ export class MisGananciasComponent implements OnInit {
   }
 
   //funcion para mapear los datos que se mostraran en ganancias
-  map(value: any){
+  map(value: any) {
     value.forEach(element => {
       if (!this.mapRentas.has(element.Ubicacion)) {
-        this.mapRentas.set(element.Ubicacion, {Ubicacion: element.Ubicacion, fecha: ["entrada: " + element.Entrada + " salida:" + element.Salida], estado: element.Estado, municipio: element.Municipio, total: element.Pago, rentas: ["$" + element.Pago]})
+        this.mapRentas.set(element.Ubicacion, {
+          Ubicacion: element.Ubicacion,
+          fecha: ["entrada: " + element.Entrada + " salida:" + element.Salida],
+          estado: element.Estado, municipio: element.Municipio, total: element.Pago, rentas: ["$" + element.Pago]
+        })
       } else {
         const obj = this.mapRentas.get(element.Ubicacion);
         obj.total = obj.total + element.Pago;
         obj.rentas.push("\n $" + element.Pago);
         obj.fecha.push("\n" + "entrada: " + element.Entrada + " salida: " + element.Salida)
-        this.mapRentas.set(element.Ubicacion,obj);
+        this.mapRentas.set(element.Ubicacion, obj);
       }
     });
 
@@ -61,9 +70,17 @@ export class MisGananciasComponent implements OnInit {
   }
 
   //funcion para obtener las ganancias totales por casas
-  Totales(value: any){
-  this.total = value.reduce((prev, curr) => prev.total + curr.total);
-  console.log(this.total);
+  Totales(value: any) {
+    this.total = value.reduce((prev, curr) => prev.total + curr.total);
+    console.log(this.total);
+  }
+
+  getveri() {
+    console.log(this.correo);
+    this._ganancias.getOcu(this.correo).subscribe((data: any) => {
+      this.ocu = data[0]["Ocupación"];
+      this.im = data[0]["imagen"];
+    })
   }
 
 }

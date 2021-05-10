@@ -1,12 +1,47 @@
-<br><br><br><br><div id="ta" class="content" style="padding: 24px;">
+<br><br>
+<div class="menu">
+    <br>
+    <div class="dropdown">
+        <button class="perfil fas fa-sign-out-alt fa-lg" style="float:right; margin-right:10px; display: flex;"
+            routerLink=""> Cerrar sesión</button>
+        <button class="dropdown-toggle  text-light fa-lg" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle" id="icono" *ngIf="im == ''"></i>
+            <img class="rounded-circle text-light" src="{{im}}" id="imagenperfil" *ngIf="im != ''">
+            Mi perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item fas fa-home fa-lg text-light" href="/cliente-catalogo/{{correo}}" id=it>
+                    Catalogo de casas</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-user-edit fa-lg text-light" href="/editarPerfil/{{correo}}" id=it> Editar
+                    mi perfil</a></li>
+            <br>
+            <li><a class="dropdown-item fas fa-calendar-day fa-lg text-light" href="/mis-rentas/{{correo}}" id=it> Mis
+                    reservaciones</a></li>
+            <br>
+            <li><a class="dropdown-item fas fas fa-sign-out-alt fa-lg text-light" href="" id=it> Cerrar sesión</a></li>
+        </ul>
+        <span id="ubicacion" class="text-light">
+            <button routerLink="" id="ub">Inicio</button>>
+            <button routerLink="/iniciar-sesion" id="ub">Iniciar sesion</button>>
+            <button routerLink="/cliente-catalogo/{{correo}}" id="ub">Catalogo de casas</button>>
+            <button routerLink="/mis-rentas/{{correo}}" id="ub" style="color: cyan">Mis reservaciones</button>
+        </span>
+    </div>
+</div>
+
+
+<div id="ta" class="content" style="padding: 24px;">
     <h3 class="text-center">Reservaciones activas</h3>
-    <div class="border-dark"fxLayout="row wrap" fxLayoutGap="24px grid">
+    <div class="border-dark" fxLayout="row wrap" fxLayoutGap="24px grid">
         <table class="table table-hover border-dark">
             <thead class="border-dark">
                 <tr>
                     <th scope="col">Datos de la casa</th>
                     <th scope="col">Fecha de entrada</th>
                     <th scope="col">Fecha de salida</th>
+                    <th scope="col">Realizar un comentario</th>
                     <th scope="col">Cancelar renta</th>
                 </tr>
             </thead>
@@ -15,10 +50,44 @@
                     <td>{{reserva.Ubicacion}} {{reserva.Municipio}}, {{reserva.Estado}}</td>
                     <td>{{reserva.Entrada}}</td>
                     <td>{{reserva.Salida}}</td>
-                    <td><button class="eliminar fas fa-trash border border-0" (click)="eliminar(reserva.iden)">Eliminar</button></td>
+                    <td><button class="Comentar fas fa-comment-dots border border-0"
+                        (click)="comentario(reserva.id)">&nbsp; Comentar</button></td>
+                    <td><button class="eliminar fas fa-trash border border-0"
+                            (click)="eliminar(reserva.iden)">&nbsp; Cancelar</button></td>
                     <!--<td><button class="fas fa-edit border border-0">Editar</button></td>-->
                 </tr>
             </tbody>
         </table>
+        
+        <form class="container" [formGroup]="com" *ngIf="respuesta=='Comentario'" (ngSubmit)="GuardarCom()" id="form">
+            <input type="text" placeholder="Escriba su comentario" formControlName="Comentario" class="border-2 border-dark" id="Comen">
+            <button type="submit" id="Envia" class="fas fa-paper-plane">&nbsp; Enviar</button>
+        </form>
     </div>
 </div>
+
+<footer id="fo" class="bg-dark text-white">
+    <div class="container">
+        <div class="row row-cols-3">
+          <div class="col">
+              Contacta con nosotros.
+              <br> <br>
+              Celular: 5637091836.
+              <br><br>
+              Correo: roof&home@gmail.com
+          </div>
+          <div class="col">
+              Siguenos.
+              <br><br>
+              <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+          </div>
+          <div class="col text-justify">
+              <br> Copyright 2016-2021 roof&home.com <br>
+              <br>
+              Todos los derechos reservados.
+            </div>
+        </div>
+      </div>
+</footer>

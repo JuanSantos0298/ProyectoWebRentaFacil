@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ServicioService} from 'src/app/Servicios/servicio.service';
+import { ServicioService } from 'src/app/Servicios/servicio.service';
 import { ToastrService } from 'ngx-toastr';
 
 //uso de imagen de perfil
 import { Observable } from 'rxjs';
-import {AngularFireStorage} from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -17,41 +17,45 @@ import { finalize } from 'rxjs/operators';
 export class EditarPerfilComponent implements OnInit {
 
   image: any;
-  datUsuario: any[]=[];
+  datUsuario: any[] = [];
   noim: any;
   Datos: FormGroup;
-  submited=false;
+  submited = false;
   id: string;
-  correo:string
-  d="";
+  correo: string
+  d = "";
   ///--------imagenes
   firepath: any;
   dowload: Observable<any>;
-  ur="";
+  ur = "";
+  //-------barra de navegación
+  im: any;
+  ocu: any;
+  dato: any;
 
-  constructor(private form: FormBuilder,private toas: ToastrService,private ruta: Router, private _usuario: ServicioService
-    ,private aRout: ActivatedRoute, private firestorage: AngularFireStorage) {
-      this.Datos=this.form.group({
-        Nombre: [''],
-        Apellido: [''],
-        Cuenta: [''],
-        CVC:[''],
-        Telefono:[''],
-        Contra:[''],
-        imagen: [''],
-      })
-      this.correo=this.aRout.snapshot.paramMap.get('correo');
-     }
+  constructor(private form: FormBuilder, private toas: ToastrService, private ruta: Router, private _usuario: ServicioService
+    , private aRout: ActivatedRoute, private firestorage: AngularFireStorage) {
+    this.Datos = this.form.group({
+      Nombre: [''],
+      Apellido: [''],
+      Cuenta: [''],
+      CVC: [''],
+      Telefono: [''],
+      Contra: [''],
+      imagen: [''],
+    })
+    this.correo = this.aRout.snapshot.paramMap.get('correo');
+  }
 
   ngOnInit(): void {
     this.llenar();
+    this.getveri();
   }
 
-  llenar()
-  {
-    this._usuario.obtenerid(this.correo).subscribe( data => {
-      this.datUsuario=[];
-      data.forEach((element:any) => {
+  llenar() {
+    this._usuario.obtenerid(this.correo).subscribe(data => {
+      this.datUsuario = [];
+      data.forEach((element: any) => {
         this.datUsuario.push({
           id: element.payload.doc.id,
           ...element.payload.doc.data(),
@@ -70,22 +74,20 @@ export class EditarPerfilComponent implements OnInit {
     });
   }
 
-  carga(event: any): void
-  {
-    this.image=event.target.files[0];
-    this.noim=event.target.files[0]["name"];
-    this.subirPerfil(this.image,this.noim);
+  carga(event: any): void {
+    this.image = event.target.files[0];
+    this.noim = event.target.files[0]["name"];
+    this.subirPerfil(this.image, this.noim);
     this.toas.info("imagen cargando");
   }
 
-  subirPerfil(imag: File,no:string)
-  {
-    this.firepath='imagenUsuario/'+no;
+  subirPerfil(imag: File, no: string) {
+    this.firepath = 'imagenUsuario/' + no;
     const fileref = this.firestorage.ref(this.firepath);
-    const task = this.firestorage.upload(this.firepath,imag);
+    const task = this.firestorage.upload(this.firepath, imag);
     task.snapshotChanges().pipe(
-      finalize(()=>{
-        fileref.getDownloadURL().subscribe(urlimage =>{
+      finalize(() => {
+        fileref.getDownloadURL().subscribe(urlimage => {
           this.dowload = urlimage;
           this.guardaurl(urlimage);
         })
@@ -93,14 +95,12 @@ export class EditarPerfilComponent implements OnInit {
     ).subscribe();
   }
 
-  guardaurl(a: string)
-  {
-    this.ur= a;
+  guardaurl(a: string) {
+    this.ur = a;
   }
 
-  actualizar()
-  {
-    const usuario: any ={
+  actualizar() {
+    const usuario: any = {
       Nombre: this.Datos.value.Nombre,
       Apellido: this.Datos.value.Apellido,
       Cuentabancaria: this.Datos.value.Cuenta,
@@ -109,9 +109,35 @@ export class EditarPerfilComponent implements OnInit {
       Contraseña: this.Datos.value.Contra,
       imagen: this.ur,
     }
-    this._usuario.ActualizarUsuario(this.datUsuario[0]["id"],usuario).then(()=>{
+    this._usuario.ActualizarUsuario(this.datUsuario[0]["id"], usuario).then(() => {
     })
-    this.toas.info("Sus datos se actualizarón correctamente","Actualización exitosa");
+    this.toas.info("Sus datos se actualizarón correctamente", "Actualización exitosa");
+  }
+
+  getveri() {
+    console.log(this.correo);
+    this._usuario.getOcu(this.correo).subscribe((data: any) => {
+      this.ocu = data[0]["Ocupación"];
+      this.im = data[0]["imagen"];
+      this.compro(this.ocu, this.im);
+    })
+  }
+
+  compro(ocu: string, ima: string) {
+    if (ocu == "Cliente") {
+      this.dato = "Cliente";
+      this.im = ima;
+      console.log(this.dato);
+    }
+    else {
+      this.dato = "Propietario";
+      this.im = ima;
+      console.log(this.dato);
+    }
+    if (ocu == "Administrador") {
+      this.dato = "Administrador";
+      this.im = ima;
+    }
   }
 
 }

@@ -9,3 +9,15 @@
     margin-right: 2%;
     margin-left: 2%;
 }
+
+#campo
+{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#b
+{
+    text-decoration: none;
+    color: white;
+}

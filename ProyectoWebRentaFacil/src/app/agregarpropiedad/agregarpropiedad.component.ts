@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ServicioService } from 'src/app/Servicios/servicio.service';
 
 @Component({
   selector: 'app-agregarpropiedad',
@@ -14,16 +15,21 @@ export class AgregarpropiedadComponent implements OnInit {
 
   correo="";
 
+  //varaibles para el navbar
+  ocu: any;
+  im: any;
+  dato: any;
+
   //Crearemos el objeto del tipo formGroup
   formularioPropiedad: FormGroup;
 
   //Obtenemos la URL de la imagen
-  urlImagen= ''
+  urlImagen= '';
 
   //Inyectamos el form-builder
   //Inyectamos el Firestore
   constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore,private aRout: ActivatedRoute,
-    private toast: ToastrService){
+    private toast: ToastrService, private service: ServicioService){
     this.correo=this.aRout.snapshot.paramMap.get('correo');
 
    }
@@ -40,6 +46,7 @@ export class AgregarpropiedadComponent implements OnInit {
       img:[this.urlImagen],
       Dueño:[this.correo],   
     })
+    this.getveri();
   }
 
 
@@ -96,6 +103,14 @@ export class AgregarpropiedadComponent implements OnInit {
   {
     this.urlImagen=img;
     console.log(this.urlImagen);
+  }
+
+  getveri() {
+    console.log(this.correo);
+    this.service.getOcu(this.correo).subscribe((data: any) => {
+      this.ocu = data[0]["Ocupación"];
+      this.im = data[0]["imagen"];
+    })
   }
 
 }

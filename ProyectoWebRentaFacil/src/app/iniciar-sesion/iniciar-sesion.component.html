@@ -1,24 +1,51 @@
-<div id="co" class="container pt-4 m">
+<div id="co" class="container">
     <div class="card border-dark mb-5 text-center " style="width: 28rem;">
         <div class="card-body">
             <h3>Iniciar sesión</h3>
-            <span *ngIf="submited && Datos.invalid" class="badge bg-danger">Todos los campos son obligatorios</span>
-            <form  class="mt-4" [formGroup]="Datos" (ngSubmit)="verificar()">
+            <span *ngIf="submited && per=='No existe'" class="badge bg-danger">Revisa tu correo o contraseña</span>
+            <form class="mt-4" [formGroup]="Datos" (ngSubmit)="verificar()">
                 <div class="row">
-                    <input type="text" class="form-control text-center mt-3 border-dark" placeholder="Correo electronico"
-                    formControlName="correo">
-                    <input type="password" class="form-control text-center mt-3 border-dark" placeholder="Contraseña"
-                    formControlName="contra">
-                    
+                    <input type="text" id="campo" class="form-control text-center mt-3 border-dark border-2"
+                        placeholder="Correo electronico" formControlName="correo">
+                    <input type="password" id="campo" class="form-control text-center mt-3 border-dark border-2"
+                        placeholder="Contraseña" formControlName="contra">
+
                     <div class="mt-3">
                         <button id="ca" type="text" class="btn btn-secondary" routerLink="">Cancelar</button>
-                        <button id="ini" type="submit"[disabled] = "Datos.invalid" class="btn btn-primary mr-3">Autenticarse</button>
+                        <button id="ini" type="submit" [disabled]="Datos.invalid"
+                            class="btn btn-primary mr-3">Autenticarse</button>
                     </div>
 
-                    <button id="re" type="text" class="btn text-primary" routerLink="/Registrarse">No te has registrado, hazlo aquí</button>
-
+                    <button id="re" type="text" class="btn text-primary" routerLink="/Registrarse">No te has registrado,
+                        hazlo aquí</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<footer id="fo" class="bg-dark text-white">
+    <div class="container">
+        <div class="row row-cols-3">
+          <div class="col">
+              Contacta con nosotros.
+              <br> <br>
+              Celular: 5637091836.
+              <br><br>
+              Correo: roof&home@gmail.com
+          </div>
+          <div class="col">
+              Siguenos.
+              <br><br>
+              <a id="b" class="fab fa-facebook fa-lg" href="https://www.facebook.com/Gamerstation-Serdan-112492897336989"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-instagram fa-lg" href="http://www.instagram.com"></a> &nbsp;&nbsp;&nbsp;
+              <a id="b" class="fab fa-twitter fa-lg" href="http://www.twitter.com"></a> &nbsp;
+          </div>
+          <div class="col text-justify">
+              <br> Copyright 2016-2021 roof&home.com <br>
+              <br>
+              Todos los derechos reservados.
+            </div>
+        </div>
+      </div>
+</footer>

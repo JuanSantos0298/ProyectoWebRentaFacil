@@ -1,0 +1,93 @@
+.perfil{
+    background-color: transparent;
+    color:white;
+    border:0px;
+    padding:5px;
+    margin-top: 9px;
+}
+.menu{
+    width: 1536px;
+    height: 70px;
+    text-align: left;
+    background-color:#215564;
+}
+#n
+{
+    background-color: black;
+    opacity: 70%;
+}
+i{
+    font-size:15px;
+    text-align:center;
+}
+.conte{
+    text-align:center;
+    float:left;
+    padding: 0px;
+    margin:0px;
+}
+
+.dropdown{
+    text-align: left;
+    background-color: transparent;
+}
+
+.dropdown-menu
+{
+    text-align: left;
+    background-color:#215564;
+    text-decoration: none;
+}
+.dropdown-item:hover
+{
+    text-decoration:none;
+
+}
+
+#dropdownMenuButton1
+{
+    background-color: transparent;
+    border: none;
+    margin-top: 9px;
+}
+
+#it
+{
+    color: transparent;
+    background-color: transparent;
+}
+
+#imagenperfil
+{
+    height: 30px; 
+    width: 30px; 
+}
+
+#icono
+{
+    margin-bottom: 9px;
+}
+
+#ubicacion
+{
+    margin-left: 8%;
+    background-color: transparent;
+}
+
+#ub
+{
+    border-color: transparent;
+    background-color: transparent;
+    color: white;
+}
+
+#ta
+{
+    height: 515px;
+}
+
+#b
+{
+    text-decoration: none;
+    color: white;
+}

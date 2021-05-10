@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ServicioService} from 'src/app/Servicios/servicio.service';
+import { ServicioService } from 'src/app/Servicios/servicio.service';
 import { ToastrService } from 'ngx-toastr';
 
 //necesidad jaja
 import { Observable } from 'rxjs';
-import {AngularFireStorage} from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -18,36 +18,41 @@ export class EditarCasaComponent implements OnInit {
   image: any;
   noim: any;
   Datos: FormGroup;
-  submited=false;
+  submited = false;
   id: string;
-  correo:string
-  d="";
+  correo: string
+  d = "";
+
   ///--------imagenes
   firepath: any;
   dowload: Observable<any>;
-  ur="";
+  ur = "";
 
+  //perfil y navbar
+  ocu: any;
+  im: any;
+  dato: any;
 
-  constructor(private form: FormBuilder,private toas: ToastrService,private ruta: Router, private _casa: ServicioService
-    ,private aRout: ActivatedRoute, private firestorage: AngularFireStorage) {
-    this.Datos=this.form.group({
+  constructor(private form: FormBuilder, private toas: ToastrService, private ruta: Router, private _casa: ServicioService
+    , private aRout: ActivatedRoute, private firestorage: AngularFireStorage) {
+    this.Datos = this.form.group({
       Costo: [''],
       Cuartos: [''],
       Descripcion: [''],
       img: [''],
     })
-    this.id=this.aRout.snapshot.paramMap.get('id');
-    this.correo=this.aRout.snapshot.paramMap.get('correo');
+    this.id = this.aRout.snapshot.paramMap.get('id');
+    this.correo = this.aRout.snapshot.paramMap.get('correo');
 
   }
 
   ngOnInit(): void {
     this.llenarDatos();
+    this.getveri();
   }
 
-  llenarDatos()
-  {
-    this._casa.datoscasa(this.id).subscribe(data=>{
+  llenarDatos() {
+    this._casa.datoscasa(this.id).subscribe(data => {
       console.log(data.payload.data()["Descripcion"]);
       this.Datos.setValue(
         {
@@ -59,22 +64,20 @@ export class EditarCasaComponent implements OnInit {
     })
   }
 
-  carga(event: any): void
-  {
-    this.image=event.target.files[0];
-    this.noim=event.target.files[0]["name"];
-    this.subircasa(this.image,this.noim);
+  carga(event: any): void {
+    this.image = event.target.files[0];
+    this.noim = event.target.files[0]["name"];
+    this.subircasa(this.image, this.noim);
     this.toas.info("imagen cargando");
   }
 
-  subircasa(imag: File,no:string)
-  {
-    this.firepath='images/'+no;
+  subircasa(imag: File, no: string) {
+    this.firepath = 'images/' + no;
     const fileref = this.firestorage.ref(this.firepath);
-    const task = this.firestorage.upload(this.firepath,imag);
+    const task = this.firestorage.upload(this.firepath, imag);
     task.snapshotChanges().pipe(
-      finalize(()=>{
-        fileref.getDownloadURL().subscribe(urlimage =>{
+      finalize(() => {
+        fileref.getDownloadURL().subscribe(urlimage => {
           this.dowload = urlimage;
           this.añ(urlimage);
         })
@@ -82,24 +85,29 @@ export class EditarCasaComponent implements OnInit {
     ).subscribe();
   }
 
-  
-  añ(a: string)
-  {
-    this.ur= a;
+
+  añ(a: string) {
+    this.ur = a;
   }
 
 
-  actualizar()
-  {
-    const casa: any ={
+  actualizar() {
+    const casa: any = {
       Descripcion: this.Datos.value.Descripcion,
       Costo: this.Datos.value.Costo,
       Cuartos: this.Datos.value.Cuartos,
       img: this.ur,
     }
-    this._casa.ActualizarCasa(this.id,casa).then(()=>{
-      this.toas.info("La casa se actualizo correctamente","Casa actualizada");
+    this._casa.ActualizarCasa(this.id, casa).then(() => {
+      this.toas.info("La casa se actualizo correctamente", "Casa actualizada");
     })
   }
 
+  getveri() {
+    console.log(this.correo);
+    this._casa.getOcu(this.correo).subscribe((data: any) => {
+      this.ocu = data[0]["Ocupación"];
+      this.im = data[0]["imagen"];
+    })
+  }
 }
