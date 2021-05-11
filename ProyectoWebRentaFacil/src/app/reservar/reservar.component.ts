@@ -72,6 +72,7 @@ export class ReservarComponent implements OnInit {
     this.obtenerdator();
     this.obtenerComentarios();
     this.getveri();
+    this.obtenerdatoscasa();
   }
 
   //funcion principal para reservar
@@ -134,11 +135,11 @@ export class ReservarComponent implements OnInit {
 
   //Obtención de datos comentarios 
   obtenerdator() {
+    console.log(this.id);
     this._ReservService.Cacomentarios(this.id).subscribe((data: any) => {
       console.log(data);
       this.coment = data[0]["Comentario"];
       this.idcasa = data[0]["IdCasa"];
-      this.obtenerdatoscasa(this.idcasa);
     })
   }
 
@@ -153,13 +154,11 @@ export class ReservarComponent implements OnInit {
         })
       });
       console.log(this.comentarios);
-
-      this.idcasa = this.comentarios[0]["IdCasa"];
-      this.obtenerdatoscasa(this.idcasa);
     });
   }
-  obtenerdatoscasa(id: string) {
-    this._ReservService.CaDatos(id).subscribe((data: any) => {
+
+  obtenerdatoscasa() {
+    this._ReservService.CaDatos(this.id).subscribe((data: any) => {
       console.log(data);
       this.im = data["img"];
       this.im2 = data["img2"];
