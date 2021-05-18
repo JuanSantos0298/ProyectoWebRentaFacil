@@ -33,7 +33,7 @@ export class EditarPerfilComponent implements OnInit {
   ocu: any;
   dato: any;
 
-  constructor(private form: FormBuilder, private toas: ToastrService, private ruta: Router, private _usuario: ServicioService
+  constructor(private form: FormBuilder, private toas: ToastrService, private _usuario: ServicioService
     , private aRout: ActivatedRoute, private firestorage: AngularFireStorage) {
     this.Datos = this.form.group({
       Nombre: [''],

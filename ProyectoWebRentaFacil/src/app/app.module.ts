@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 //Importamos para el servicio de Firebase
 import { AngularFireModule } from '@angular/fire';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //enviroments
 import { environment } from '../environments/environment';
@@ -21,7 +23,6 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { ClienteCatalogoComponent } from './cliente-catalogo/cliente-catalogo.component';
 import { EditarCasaComponent } from './editar-casa/editar-casa.component';
 import { AgregarpropiedadComponent } from './agregarpropiedad/agregarpropiedad.component';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ReservarComponent } from './reservar/reservar.component';
 import { MisRentasComponent } from './mis-rentas/mis-rentas.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
@@ -53,6 +54,7 @@ import { MisGananciasComponent } from './mis-ganancias/mis-ganancias.component';
     AngularFireStorageModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     
   ],
   providers: [],

@@ -11,8 +11,8 @@
 #co
 {
     margin-top: 10%;
-    margin-left: 35%;
-    position: fixed;
+    display: flex;
+    justify-content: center;
 }
 
 #re
@@ -28,10 +28,7 @@
 
 #fo
 {
-    margin-top: 39.5%;
-    height: 150px;
-    width: 100%;
-    position: fixed;
+    margin-top: 8%;
 }
 
 #b

@@ -2,6 +2,8 @@
 {
     position:relative;
     margin-left:6%;
+    display: flex;
+    justify-content: center;
 }
 .c {
     display: block;

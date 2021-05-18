@@ -54,7 +54,7 @@ export class IniciarSesionComponent implements OnInit {
   ver(da: String, de: String, du: String, di: String, no: string, ap: string) {
     if (da == de && du == di) {
       this.respuesta = "Existe";
-      this.toastr.info("Bienvenido " + no + " " + ap, "");
+      this.toastr.info("Bienvenido/a " + no + " " + ap, "");
       this.ruta.navigate(['/cliente-catalogo/' + de]);
     }
   }

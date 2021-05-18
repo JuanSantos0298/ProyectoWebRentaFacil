@@ -16,7 +16,7 @@ export class AgregarUsuariosComponent implements OnInit {
   formularioUsuario:FormGroup;
 
   //Establezco la validacion para el formulario
-  constructor(private toars: ToastrService,private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(private toars: ToastrService,private fb: FormBuilder, private db: AngularFirestore) { }
 
   ngOnInit(){
     this.formularioUsuario = this.fb.group({
